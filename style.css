@@ -43,7 +43,7 @@
     font-weight: 550;
 }
 
-/* GAMEBOARD GAMEBOARD GAMEBOARD GAMEBOARD GAMEBOARD GAMEBOARD GAMEBOARD GAMEBOARD GAMEBOARD GAMEBOARD GAMEBOARD GAMEBOARD */
+/* CENTER-CONSOLE CENTER-CONSOLE CENTER-CONSOLE CENTER-CONSOLE CENTER-CONSOLE CENTER-CONSOLE CENTER-CONSOLE CENTER-CONSOLE */
 
 #body {
     background-color: #97b1a6;
@@ -61,6 +61,9 @@
     display: flex;
     flex-flow: column wrap;
     width: 100rem;
+    height: 80vh;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .player-card {
@@ -80,9 +83,37 @@
 }
 
 .player-name-text, .game-tracker-text, .player-quote-text {
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: #c9c5ba;
     font-weight: 500;
+}
+
+.player-quote-text {
+    display: none;
+}
+
+/* GAMEBOARD GAMEBOARD GAMEBOARD GAMEBOARD GAMEBOARD GAMEBOARD GAMEBOARD GAMEBOARD GAMEBOARD GAMEBOARD GAMEBOARD GAMEBOARD GAMEBOARD */
+
+#game-board {
+    display: grid;
+    height: 50vh;
+    width: 35vw;
+    grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+    background-color: #97b1a6;
+    color: #ebbab9;
+    border: solid 2px 2px black;
+    gap: 15px;
+}
+
+.game-box {
+    width: 0.1fr;
+    height: 0.1fr;
+}
+
+#row1col1 {
+    grid-area: 1 / 1;
 }
 
 /* FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER */

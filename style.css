@@ -9,7 +9,7 @@
 #header {
     background-color: #ebbab9;
     color: #698996;
-    font-size: 36px;
+    font-size: 2rem;
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
@@ -63,29 +63,26 @@
     width: 100rem;
 }
 
-#player-one {
+.player-card {
     background-color: #407076;
     display: flex;
     flex-flow: column wrap;
     width: 30rem;
     justify-content: flex-start;
     align-items: center;
-}
-
-#player-two {
-    background-color: #698996;
-    display: flex;
-    flex-flow: column wrap;
-    flex: auto;
-    width: 30rem;
-    justify-content: flex-start;
-    align-items: center;
+    padding: 20px;
 }
 
 .player-icon {
     border-radius: 50%;
-    height: 10rem;
-    width: 10rem;
+    height: 8rem;
+    width: 8rem;
+}
+
+.player-name-text, .game-tracker-text, .player-quote-text {
+    font-size: 2rem;
+    color: #c9c5ba;
+    font-weight: 500;
 }
 
 /* FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER */

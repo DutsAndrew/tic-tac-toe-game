@@ -116,7 +116,7 @@
 
 #game-start-container {
     position: absolute;
-    display: flex;
+    display: none;
     flex-flow: row wrap;
     justify-content: center;
     align-self: center;
@@ -129,6 +129,26 @@
     background: url(./imgs/background-form-img.jpg) 50%/ cover 
                     border-box /* background-origin */
                     padding-box /* background-clip */;
+}
+
+#close-game-form {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+}
+
+#close-circle-svg {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: flex-start;
+    width: 2.3rem;
+    height: 2.3rem;
+    filter: invert(81%) sepia(19%) saturate(465%) hue-rotate(314deg) brightness(96%) contrast(92%);
 }
 
 #game-setup-header-text {
@@ -166,15 +186,6 @@
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
-}
-
-player-input-container {
-    display: flex;
-    flex-flow: row nowrap;
-    gap: 15px;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.1rem;
 }
 
 .form-text-input {

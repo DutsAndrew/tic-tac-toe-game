@@ -31,19 +31,33 @@
     <div id="center-console">
         <div id="game-start-container">
             <form id="game-start-form">
-                <p>Game Setup:</p>
-                <label for="player-vs-player" class="form-input">Player VS Player</label>
-                <input type="radio" id="player-vs-player" name="game-setup" value="Player VS Player">
-                <label for="player-vs-computer" class="form-input">Player VS Computer</label>
-                <input type="radio" id="player-vs-computer" name="game-setup" value="Player VS Computer">
+                <p id="game-setup-header-text">Game Setup:</p>
+
+                <div class="radio-button-container">
+                    <div id="player-one-select-container">
+                        <label for="player-vs-player" class="form-radio-input">Player VS Player</label>
+                        <input type="radio" id="player-vs-player" name="game-setup" value="Player VS Player">
+                    </div>
+                    <div id="player-two-select-container">
+                        <label for="player-vs-computer" class="form-radio-input">Player VS Computer</label>
+                        <input type="radio" id="player-vs-computer" name="game-setup" value="Player VS Computer">
+                    </div>
+                </div>
     
-                <label for="player-one-name" class="form-input">Player One Name:</label>
-                <input type="text" class="form-input" id="player-one-name" placeholder="Player 1" maxlength="3" minlength="1">
-                <p class="error-msg" id="player-one-name-error"></p>
-    
-                <label for="player-two-name" class="form-input">Player Two Name:</label>
-                <input type="text" class="form-input" id="player-two-name" placeholder="Player 2" maxlength="3" minlength="1">
-                <p class="error-msg" id="player-two-name-error"></p>
+                <div class="player-input-container">
+                    <div id="player-one-input-container">
+                        <label for="player-one-name" class="form-input">Player One Name:</label>
+                        <input type="text" class="form-text-input" id="player-one-name" placeholder="Player 1" maxlength="20" minlength="1">
+                        <p class="error-msg" id="player-one-name-error"></p>
+                    </div>
+                    <div id="player-two-input-container">
+                        <label for="player-two-name" class="form-input">Player Two Name:</label>
+                        <input type="text" class="form-text-input" id="player-two-name" placeholder="Player 2" maxlength="20" minlength="1">
+                        <p class="error-msg" id="player-two-name-error"></p>
+                    </div>
+                </div>
+
+                <input type="button" name="submit" id="submit-game-settings" value="Create Game Lobby">
             </form>
         </div>
         <p id="game-over-message"></p>

@@ -114,9 +114,84 @@
 
 /* GAME-START-FORM GAME-START-FORM GAME-START-FORM GAME-START-FORM GAME-START-FORM GAME-START-FORM GAME-START-FORM GAME-START-FORM */
 
-#game-start-form {
+#game-start-container {
+    position: absolute;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-self: center;
     background-color: #698996;
     color: #ebbab9;
+    width: 100vw;
+    height: 75vh;
+    padding-top: 7.5%;
+    border: solid #698996;
+    background: url(./background-form-img.jpg) 50%/ cover 
+                    border-box /* background-origin */
+                    padding-box /* background-clip */;
+}
+
+#game-setup-header-text {
+    display: flex;
+    font-size: 2rem;
+}
+
+#game-start-form {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    font-weight: 900;
+    font-size: 1.1rem;
+    background-color:#698996;
+    height: 50vh;
+    width: 50vh;
+    border-radius: 25px;
+    box-shadow: 1px 1px 1px 1px #407076;
+    line-height: 100%;
+}
+
+.radio-button-container {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 25px;
+    padding-bottom: 15px;
+    justify-content: center;
+    align-items: center;
+}
+
+#player-vs-player #player-vs-computer {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+player-input-container {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1rem;
+}
+
+.form-text-input {
+    background-color: #c9c5ba;
+}
+
+#submit-game-settings {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 40px;
+    color: #407076;
+    background-color: #c9c5ba;
+    font-weight: 900;
+    font-size: 0.8rem;
+    border-radius: 5px;
 }
 
 /* FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER */

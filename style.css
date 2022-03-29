@@ -102,7 +102,6 @@
     justify-content: center;
     align-items: center;
     background-color: #97b1a6;
-    color: #ebbab9;
     border: solid 2px 2px black;
     gap: 15px;
 }
@@ -110,10 +109,14 @@
 .game-box {
     width: 0.1fr;
     height: 0.1fr;
+    color: #ebbab9;
 }
 
-#row1col1 {
-    grid-area: 1 / 1;
+/* GAME-START-FORM GAME-START-FORM GAME-START-FORM GAME-START-FORM GAME-START-FORM GAME-START-FORM GAME-START-FORM GAME-START-FORM */
+
+#game-start-form {
+    background-color: #698996;
+    color: #ebbab9;
 }
 
 /* FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER */

@@ -20,14 +20,32 @@
 </div>
 
 <div id="body">
+
     <div id="player-one" class="player-card">
-        <img src="./solaire-knight.jpeg" id="player-one-img" class="player-icon">
-        <p id="player-one-name" class="player-name-text">Player 1</p>
+        <img src="./imgs/solaire-knight.jpeg" id="player-one-img" class="player-icon">
+        <p id="player-one-name-display" class="player-name-text">Player 1</p>
         <p id="player-one-tracker" class="game-tracker-text">Wins: 0 | Loses: 0</p>
         <p id="player-one-quote" class="player-quote-text">“The sun is a wondrous body. Like a magnificent father!” — Solaire of Astora</p>
     </div>
 
     <div id="center-console">
+        <div id="game-start-container">
+            <form id="game-start-form">
+                <p>Game Setup:</p>
+                <label for="player-vs-player" class="form-input">Player VS Player</label>
+                <input type="radio" id="player-vs-player" name="game-setup" value="Player VS Player">
+                <label for="player-vs-computer" class="form-input">Player VS Computer</label>
+                <input type="radio" id="player-vs-computer" name="game-setup" value="Player VS Computer">
+    
+                <label for="player-one-name" class="form-input">Player One Name:</label>
+                <input type="text" class="form-input" id="player-one-name" placeholder="Player 1" maxlength="3" minlength="1">
+                <p class="error-msg" id="player-one-name-error"></p>
+    
+                <label for="player-two-name" class="form-input">Player Two Name:</label>
+                <input type="text" class="form-input" id="player-two-name" placeholder="Player 2" maxlength="3" minlength="1">
+                <p class="error-msg" id="player-two-name-error"></p>
+            </form>
+        </div>
         <p id="game-over-message"></p>
 
         <div id="game-board">
@@ -44,8 +62,8 @@
     </div>
 
     <div id="player-two" class="player-card">
-        <img src="./onion-knight.jpeg" id="player-two-img" class="player-icon">
-        <p id="player-two-name" class="player-name-text">Player 2</p>
+        <img src="./imgs/onion-knight.jpeg" id="player-two-img" class="player-icon">
+        <p id="player-two-name-display" class="player-name-text">Player 2</p>
         <p id="player-two-tracker" class="game-tracker-text">Wins: 0 | Loses: 0</p>
         <p id="player-two-quote" class="player-quote-text">"Hrgrraaaaggh! Hiyaaaaaah! C'mon! Over here, you fiends! Perish, foul creatures! I am Siegmeyer of Catarina, and you shall feel my wrath!" - Siegmeyer of Catarina</p>
     </div>

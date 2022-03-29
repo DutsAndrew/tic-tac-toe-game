@@ -188,6 +188,13 @@
     align-items: center;
 }
 
+.player-inputs {
+    display: flex;
+    height: 30px;
+    gap: 20px;
+    padding-bottom: 5px;
+}
+
 .form-text-input {
     background-color: #c9c5ba;
 }

@@ -1,4 +1,4 @@
-const gameForm = (function() {
+const _gameForm = (function() {
     'use strict';
 
     const startGameButton = document.querySelector('#start-game');
@@ -78,31 +78,15 @@ const gameForm = (function() {
             location.reload();
         }
     }
-
-    // // Check to see if Player One and Player Two variables have data, and if they meet the checks to send the information out to global scope.
-    // if (typeof storePlayerTwoName !== 'undefined' ) {
-    //     return {
-    //         playerOneName,
-    //         playerTwoName,
-    //         gameMode
-    //     }
-    // } else if (typeof storePlayerOneName !== 'undefined' && typeof storePlayerTwoName == 'undefined') {
-    //     return {
-    //         playerOneName,
-    //         gameMode
-    //     }
-    // }
 })();
 
+const _resetGame = (function() {
+    'use strict';
 
-// const playerModule = (function() {
-//     'use strict';
+    const resetGameButton = document.querySelector('#reset-game');
+    resetGameButton.addEventListener('click', _reloadPage);
 
-//     const playerFactory = (name) => {
-//         if (playerNameExists === true) {
-//             playerOne
-//         }
-
-//     }
-
-// })();
+    function _reloadPage() {
+        location.reload();
+    }
+})();

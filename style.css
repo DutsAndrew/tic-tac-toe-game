@@ -94,19 +94,18 @@
 
 #game-board {
     display: grid;
-    grid-template: 0.75fr 0.75fr 0.75fr / 0.75fr 0.75fr 0.75fr;
-    justify-self: center;
+    grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;
+    justify-items: center;
     align-items: center;
-    height: 65vh;
+    height: 70vh;
     width: 45vw;
-    padding-left: 7%;
     border-radius: 5%;
     background-color: #a17e4b;
 }
 
 .game-box {
-    width: 190px;
-    height: 160px;
+    width: 220px;
+    height: 190px;
     border-radius: 5%;
     border: 2px solid #572824;
 }

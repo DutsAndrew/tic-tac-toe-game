@@ -24,6 +24,7 @@
     <div id="player-one" class="player-card">
         <img src="./imgs/solaire-knight.jpeg" id="player-one-img" class="player-icon">
         <p id="player-one-name-display" class="player-name-text">Player 1</p>
+        <p id="player-one-symbol-display" class="players-symbol-choice"></p>
         <p id="player-one-tracker" class="game-tracker-text">Wins: 0 | Loses: 0</p>
         <p id="player-one-quote" class="player-quote-text">“The sun is a wondrous body. Like a magnificent father!” — Solaire of Astora</p>
     </div>
@@ -39,7 +40,7 @@
 
                 <p id="game-setup-header-text">Game Setup:</p>
 
-                <div class="radio-button-container">
+                <div id="game-settings-container" class="radio-button-container">
                     <div id="player-one-select-container">
                         <label for="player-vs-player" class="form-radio-input">Player VS Player</label>
                         <input type="radio" id="player-vs-player" name="game-setting-selector" value="player-vs-player">
@@ -47,6 +48,18 @@
                     <div id="player-two-select-container">
                         <label for="player-vs-computer" class="form-radio-input">Player VS Computer</label>
                         <input type="radio" id="player-vs-computer" name="game-setting-selector" value="player-vs-computer">
+                    </div>
+                </div>
+
+                <div id="symbol-choice-container" class="radio-button-container">
+                    <legend id="symbol-legend">Player One Symbol Choice:</legend>
+                    <div id="symbol-sword-container">
+                        <label for="symbol-sword" class="form-radio-input">Sword 🗡️</label>
+                        <input type="radio" id="symbol-sword" name="symbol-choice-selector" value="player-vs-player">
+                    </div>
+                    <div id="symbol-shield-container">
+                        <label for="symbolshield" class="form-radio-input">Shield 🛡️</label>
+                        <input type="radio" id="symbol-shield" name="symbol-choice-selector" value="player-vs-computer">
                     </div>
                 </div>
     
@@ -84,6 +97,7 @@
     <div id="player-two" class="player-card">
         <img src="./imgs/onion-knight.jpeg" id="player-two-img" class="player-icon">
         <p id="player-two-name-display" class="player-name-text">Player 2</p>
+        <p id="player-two-symbol-display" class="players-symbol-choice"></p>
         <p id="player-two-tracker" class="game-tracker-text">Wins: 0 | Loses: 0</p>
         <p id="player-two-quote" class="player-quote-text">"Hrgrraaaaggh! Hiyaaaaaah! C'mon! Over here, you fiends! Perish, foul creatures! I am Siegmeyer of Catarina, and you shall feel my wrath!" - Siegmeyer of Catarina</p>
     </div>

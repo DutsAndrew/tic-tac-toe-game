@@ -77,8 +77,12 @@ const _gameForm = (function() {
         let playerOneName = document.querySelector('#player-one-name').value;
         let playerTwoName = document.querySelector('#player-two-name').value;
 
+        let playerOneSymbol = document.querySelector('#symbol-choice-selector').checked;
+
         let storePlayerOneName;
         let storePlayerTwoName;
+        let storePlayerOneSymbol;
+        let storePlayerTwoSymbol;
 
         if (gameMode == 0) {
             gameForm.reset();
@@ -141,3 +145,13 @@ const _gameBoard = (function() {
 
 
 })();
+
+function findGameSymbol() {
+    let finder = document.getElementsByName('symbol-choice-selector');
+
+    for (i = 0; i < finder.length; i++) {
+        if (finder[i].checked) {
+            
+        }
+    }
+}

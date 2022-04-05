@@ -161,7 +161,7 @@
     align-items: center;
     gap: 5px;
     font-weight: 900;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     background-color: #a17e4b;
     height: 50vh;
     width: 50vh;
@@ -184,6 +184,14 @@
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
+}
+
+#symbol-choice-container {
+    display: flex;
+    flex-flow: column wrap;
+    border: solid 2px #fbc362;
+    padding: 5px;
+    margin: 5px;
 }
 
 .player-inputs {

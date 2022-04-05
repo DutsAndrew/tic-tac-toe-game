@@ -81,7 +81,7 @@
 }
 
 .player-name-text, .game-tracker-text, .player-quote-text {
-    font-size: 1.5rem;
+    font-size: 2rem;
     color: #572824;
     font-weight: 500;
 }
@@ -107,7 +107,7 @@
     width: 220px;
     height: 190px;
     border-radius: 5%;
-    border: 2px solid #572824;
+    border: 3.5px solid #572824;
 }
 
 /* GAME-START-FORM GAME-START-FORM GAME-START-FORM GAME-START-FORM GAME-START-FORM GAME-START-FORM GAME-START-FORM GAME-START-FORM */

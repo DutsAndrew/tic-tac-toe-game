@@ -93,7 +93,20 @@ const _gameForm = (function() {
         } else {
             location.reload();
         }
+        
+        if (storePlayerOneName !== "" && storePlayerTwoName !== "") {
+            const playerOne = playerFactory(`${storePlayerOneName}, 0, 0`);
+            const playerTwo = playerFactory(`${storePlayerTwoName}, 0, 0`);
+            return { playerOne, playerTwo };
+        } else if (storePlayerOneName !== "" && storePlayerTwoName === "") {
+            const playerOne = playerFactory(`${storePlayerOneName}, 0, 0`);
+            return { playerOne, playerTwo };
+        }
     }
+    const playerFactory = (name, wins, loses) => {
+        const playerInfo = () => console.log(`Player: ${name}, Wins: ${wins}, Loses: ${loses}`);
+        return { name, wins, loses, playerInfo };
+    };
 })();
 
 // Handles all events and functions for reseting the game

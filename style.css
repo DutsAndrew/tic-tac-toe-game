@@ -124,7 +124,7 @@
     height: 75vh;
     padding-top: 7.5%;
     border: solid #a17e4b;
-    background: url(./imgs/background-form-img.jpg) 50%/ cover 
+    background: #fbcc5f 50%/ cover 
                     border-box /* background-origin */
                     padding-box /* background-clip */;
 }

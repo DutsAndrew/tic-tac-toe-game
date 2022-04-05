@@ -1,16 +1,13 @@
+// Handles all events and functions that involve starting or reseting the game
 const _gameForm = (function() {
     'use strict';
 
+    // functions to open and close the form
+    const gameForm = document.querySelector('#game-start-form');
     const startGameButton = document.querySelector('#start-game');
     const startGameForm = document.querySelector('#game-start-container');
     const closeGameForm = document.querySelector('#close-game-form');
-    const gameForm = document.querySelector('#game-start-form');
-    const playerTwoContainer = document.querySelector('#player-two-input-container');
-    const submitGameSettings = document.querySelector('#submit-game-settings');
-    const displayNamePlayerOne = document.querySelector('#player-one-name-display');
-    const displayNamePlayerTwo = document.querySelector('#player-two-name-display');
 
-    // functions to open and close the form
     startGameButton.addEventListener('click', _openForm);
     closeGameForm.addEventListener('click', _closeForm);
 
@@ -31,7 +28,15 @@ const _gameForm = (function() {
         }
     }
 
+   gameForm.onkeydown = function() {
+       if (window.event.keyCode == '13') {
+           _submitSettings();
+       }
+   }
+
     // Controls for when Players are being selected
+    const playerTwoContainer = document.querySelector('#player-two-input-container');
+
     let gameMode = 0;
 
     const playerVsComputer = document.querySelector('#player-vs-computer').onclick = function() {
@@ -49,11 +54,19 @@ const _gameForm = (function() {
     }
 
     // Handles setting up game when submitting form
+    const submitGameSettings = document.querySelector('#submit-game-settings');
+    const displayNamePlayerOne = document.querySelector('#player-one-name-display');
+    const displayNamePlayerTwo = document.querySelector('#player-two-name-display');
+
     submitGameSettings.addEventListener('click', _submitSettings)
 
     function _submitSettings() {
+
         let playerOneName = document.querySelector('#player-one-name').value;
         let playerTwoName = document.querySelector('#player-two-name').value;
+
+        let storePlayerOneName;
+        let storePlayerTwoName;
 
         if (gameMode == 0) {
             gameForm.reset();
@@ -67,11 +80,14 @@ const _gameForm = (function() {
         } else if (gameMode == 1 && playerOneName != "") {
             displayNamePlayerOne.textContent = `${playerOneName}`;
             displayNamePlayerTwo.textContent = "Computer";
+            storePlayerOneName = playerOneName;
             gameForm.reset();
             _closeForm();
         } else if (gameMode == 2 && playerOneName != "" && playerTwoName != "") {
             displayNamePlayerOne.textContent = `${playerOneName}`;
             displayNamePlayerTwo.textContent = `${playerTwoName}`;
+            storePlayerOneName = playerOneName;
+            storePlayerTwoName = playerTwoName;
             gameForm.reset();
             _closeForm();
         } else {
@@ -80,13 +96,21 @@ const _gameForm = (function() {
     }
 })();
 
+// Handles all events and functions for reseting the game
 const _resetGame = (function() {
     'use strict';
 
     const resetGameButton = document.querySelector('#reset-game');
-    resetGameButton.addEventListener('click', _reloadPage);
+    resetGameButton.addEventListener('click', reloadPage);
 
-    function _reloadPage() {
+    function reloadPage() {
         location.reload();
     }
+})();
+
+// Handles all events and functions that involve the gameboard
+const _gameBoard = (function() {
+    'use strict';
+
+
 })();

@@ -52,6 +52,7 @@
     height: 80vh;
     flex: auto;
     margin: auto;
+    background-color: #fbcc5f;
 }
 
 #center-console {
@@ -67,6 +68,7 @@
 .player-card {
     background-color: #fbcc5f;
     display: flex;
+    visibility: visible;
     flex-flow: column wrap;
     width: 30rem;
     justify-content: flex-start;
@@ -90,6 +92,10 @@
     display: none;
 }
 
+.players-symbol-choice {
+    font-size: 2rem;
+}
+
 /* GAMEBOARD GAMEBOARD GAMEBOARD GAMEBOARD GAMEBOARD GAMEBOARD GAMEBOARD GAMEBOARD GAMEBOARD GAMEBOARD GAMEBOARD GAMEBOARD GAMEBOARD */
 
 #game-board {
@@ -100,12 +106,18 @@
     height: 70vh;
     width: 45vw;
     border-radius: 5%;
+    overflow: auto;
     background-color: #a17e4b;
 }
 
 .game-box {
-    width: 220px;
-    height: 190px;
+    display: flex;
+    flex: 1 2 15rem;
+    justify-content: stretch;
+    align-items: stretch;
+    width: 15rem;
+    max-width: 100%;
+    height: 12rem;
     border-radius: 5%;
     border: 3.5px solid #572824;
 }

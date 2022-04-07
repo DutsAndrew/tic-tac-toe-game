@@ -1,15 +1,3 @@
-// Creates and stores players
-const playerFactory = (name, wins, loses, symbol) => {
-    const playerInfo = () => console.log(`Player: ${name}, Wins: ${wins}, Loses: ${loses}`);
-    return { 
-        name: name,
-        wins: wins,
-        loses: loses,
-        symbol: symbol,
-        playerInfo: playerInfo,
-    };
-};
-
 // Handles all events and functions that involve starting or reseting the game
 const _gameForm = (function() {
     'use strict';
@@ -39,12 +27,11 @@ const _gameForm = (function() {
             gameFormOpen = false;
         }
     }
-
-   gameForm.onkeydown = function() {
-       if (window.event.keyCode == '13') {
-           _submitSettings();
-       }
-   }
+//    gameForm.onkeydown = function() {
+//        if (window.event.keyCode == '13') {
+//            _submitSettings();
+//        }
+//    }
 
     // Controls for when Players are being selected
     const playerTwoContainer = document.querySelector('#player-two-input-container');
@@ -56,7 +43,6 @@ const _gameForm = (function() {
         gameMode = 1;
         console.log(`Game Mode: ${gameMode} - Player VS Computer was selected`);
     }
-
     const playerVsPlayer = document.querySelector('#player-vs-player').onclick = function() {
         gameMode = 2;
         console.log(`Game Mode: ${gameMode} - Player VS Player was selected`);
@@ -65,24 +51,36 @@ const _gameForm = (function() {
         }
     }
 
+    // Assigns symbol choices to players in the game
+    let playerOneSymbolChoice = 0;
+    let playerTwoSymbolChoice = 0;
+
+    const playerChoiceSword = document.querySelector('#symbol-sword').onclick = function() {
+        playerOneSymbolChoice = 1;
+        playerTwoSymbolChoice = 2;
+        console.log("Player One, has chosen 'Sword', and Player Two has chosen 'Shield'");
+    }
+    const playerChoiceShield = document.querySelector('#symbol-shield').onclick = function() {
+        playerOneSymbolChoice = 2;
+        playerTwoSymbolChoice = 1;
+        console.log("Player One, has chosen 'Shield', and Player Two has chosen 'Sword'");
+    }
+
     // Handles setting up game when submitting form
     const submitGameSettings = document.querySelector('#submit-game-settings');
     const displayNamePlayerOne = document.querySelector('#player-one-name-display');
     const displayNamePlayerTwo = document.querySelector('#player-two-name-display');
-
-    submitGameSettings.addEventListener('click', _submitSettings)
+    const displaySymbolPlayerOne = document.querySelector('#player-one-symbol-display');
+    const displaySymbolPlayerTwo = document.querySelector('#player-two-symbol-display');
+    
+    submitGameSettings.addEventListener('click', _submitSettings);
 
     function _submitSettings() {
 
         let playerOneName = document.querySelector('#player-one-name').value;
         let playerTwoName = document.querySelector('#player-two-name').value;
-
-        let playerOneSymbol = document.querySelector('#symbol-choice-selector').checked;
-
         let storePlayerOneName;
         let storePlayerTwoName;
-        let storePlayerOneSymbol;
-        let storePlayerTwoSymbol;
 
         if (gameMode == 0) {
             gameForm.reset();
@@ -96,32 +94,43 @@ const _gameForm = (function() {
         } else if (gameMode == 1 && playerOneName != "") {
             displayNamePlayerOne.textContent = `${playerOneName}`;
             displayNamePlayerTwo.textContent = "Computer";
-            storePlayerOneName = playerOneName;
+            if (playerOneSymbolChoice === 1) {
+                displaySymbolPlayerOne.textContent = "Sword 🗡️";
+                displaySymbolPlayerTwo.textContent = "Shield 🛡️";
+            } else if (playerOneSymbolChoice === 2) {
+                displaySymbolPlayerOne.textContent = "Shield 🛡️";
+                displaySymbolPlayerTwo.textContent = "Sword 🗡️";
+            }
             gameForm.reset();
             _closeForm();
         } else if (gameMode == 2 && playerOneName != "" && playerTwoName != "") {
             displayNamePlayerOne.textContent = `${playerOneName}`;
             displayNamePlayerTwo.textContent = `${playerTwoName}`;
-            storePlayerOneName = playerOneName;
-            storePlayerTwoName = playerTwoName;
+            if (playerOneSymbolChoice === 1) {
+                displaySymbolPlayerOne.textContent = "Sword 🗡️";
+                displaySymbolPlayerTwo.textContent = "Shield 🛡️";
+            } else if (playerOneSymbolChoice === 2) {
+                displaySymbolPlayerOne.textContent = "Shield 🛡️";
+                displaySymbolPlayerTwo.textContent = "Sword 🗡️";
+            }
             gameForm.reset();
             _closeForm();
         } else {
             location.reload();
         }
-        
+
         if (storePlayerOneName !== "" && storePlayerTwoName !== "") {
             const playerOne = playerFactory(`${storePlayerOneName}, 0, 0`);
             const playerTwo = playerFactory(`${storePlayerTwoName}, 0, 0`);
             return {
                 playerOne,
-                playerTwo
+                playerTwo,
             };
         } else if (storePlayerOneName !== "" && storePlayerTwoName === "") {
             const playerOne = playerFactory(`${storePlayerOneName}, 0, 0`);
             return { 
                 playerOne, 
-                playerTwo
+                playerTwo,
             };
         }
     }
@@ -146,12 +155,26 @@ const _gameBoard = (function() {
 
 })();
 
+// Finds the selected player symbol, declares a variable, and returns it for use
 function findGameSymbol() {
     let finder = document.getElementsByName('symbol-choice-selector');
 
     for (i = 0; i < finder.length; i++) {
         if (finder[i].checked) {
-            
+            let playerOneSymbol = i;
+            return playerOneSymbol;
         }
     }
 }
+
+// Creates and stores players
+const playerFactory = (name, wins, loses, symbol) => {
+    const playerInfo = () => console.log(`Player: ${name}, Wins: ${wins}, Loses: ${loses}, Symbol: ${symbol}`);
+    return { 
+        name: name,
+        wins: wins,
+        loses: loses,
+        symbol: symbol,
+        playerInfo: playerInfo,
+    };
+};

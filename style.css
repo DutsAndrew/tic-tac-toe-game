@@ -151,12 +151,12 @@
     display: none;
     flex-flow: row wrap;
     justify-content: center;
-    align-self: center;
+    align-items: flex-start;
     color:#572824;
     background-color: #a17e4b;
     width: 100vw;
-    height: 75vh;
-    padding-top: 7.5%;
+    height: 80vh;
+    padding-top: 1.5%;
     border: solid #a17e4b;
     background: #fbcc5f 50%/ cover 
                     border-box /* background-origin */
@@ -197,11 +197,25 @@
     font-weight: 900;
     font-size: 1.3rem;
     background-color: #a17e4b;
-    height: 50vh;
-    width: 50vh;
-    border-radius: 25px;
-    box-shadow: 1px 1px 1px 1px #fbc362;
+    height: 60vh;
+    width: 60vh;
+    opacity: 0.85;
+    border-radius: 15px;
+    box-shadow: 2px 2px 2px #fbc362;
     line-height: 100%;
+    border: 2px solid #3c5453;
+}
+
+.game-setup {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border: 2px solid #572824;
 }
 
 .radio-button-container {

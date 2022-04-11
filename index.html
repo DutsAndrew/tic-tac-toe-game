@@ -38,41 +38,40 @@
                     <img id="close-circle-svg" src="./imgs/close-circle.svg">
                 </button>
 
-                <p id="game-setup-header-text">Game Setup:</p>
-
-                <div id="game-settings-container" class="radio-button-container">
-                    <div id="player-one-select-container">
-                        <label for="player-vs-player" class="form-radio-input">Player VS Player</label>
-                        <input type="radio" id="player-vs-player" name="game-setting-selector" value="player-vs-player">
+                <div class="game-setup" id="game-setup-js">
+                    <p id="game-setup-header-text">Game Setup:</p>
+                    <div id="game-settings-container" class="radio-button-container">
+                        <div id="player-one-select-container">
+                            <label for="player-vs-player" class="form-radio-input">Player VS Player</label>
+                            <input type="radio" id="player-vs-player" name="game-setting-selector" value="player-vs-player">
+                        </div>
+                        <div id="player-two-select-container">
+                            <label for="player-vs-computer" class="form-radio-input">Player VS Computer</label>
+                            <input type="radio" id="player-vs-computer" name="game-setting-selector" value="player-vs-computer">
+                        </div>
                     </div>
-                    <div id="player-two-select-container">
-                        <label for="player-vs-computer" class="form-radio-input">Player VS Computer</label>
-                        <input type="radio" id="player-vs-computer" name="game-setting-selector" value="player-vs-computer">
+                    <div id="symbol-choice-container" class="radio-button-container">
+                        <legend id="symbol-legend">Player One Symbol Choice:</legend>
+                        <div id="symbol-sword-container">
+                            <label for="symbol-sword" class="form-radio-input">Sword 🗡️</label>
+                            <input type="radio" id="symbol-sword" name="symbol-choice-selector" value="player-vs-player">
+                        </div>
+                        <div id="symbol-shield-container">
+                            <label for="symbolshield" class="form-radio-input">Shield 🛡️</label>
+                            <input type="radio" id="symbol-shield" name="symbol-choice-selector" value="player-vs-computer">
+                        </div>
                     </div>
-                </div>
-
-                <div id="symbol-choice-container" class="radio-button-container">
-                    <legend id="symbol-legend">Player One Symbol Choice:</legend>
-                    <div id="symbol-sword-container">
-                        <label for="symbol-sword" class="form-radio-input">Sword 🗡️</label>
-                        <input type="radio" id="symbol-sword" name="symbol-choice-selector" value="player-vs-player">
-                    </div>
-                    <div id="symbol-shield-container">
-                        <label for="symbolshield" class="form-radio-input">Shield 🛡️</label>
-                        <input type="radio" id="symbol-shield" name="symbol-choice-selector" value="player-vs-computer">
-                    </div>
-                </div>
-    
-                <div class="player-input-container">
-                    <div id="player-one-input-container" class="player-inputs">
-                        <label for="player-one-name" class="form-input">Player One Name:</label>
-                        <input type="text" class="form-text-input" id="player-one-name" placeholder="Player 1" maxlength="20" minlength="1">
-                        <p class="error-msg" id="player-one-name-error"></p>
-                    </div>
-                    <div id="player-two-input-container" class="player-inputs">
-                        <label for="player-two-name" class="form-input">Player Two Name:</label>
-                        <input type="text" class="form-text-input" id="player-two-name" placeholder="Player 2" maxlength="20" minlength="1">
-                        <p class="error-msg" id="player-two-name-error"></p>
+                    <div class="player-input-container">
+                        <div id="player-one-input-container" class="player-inputs">
+                            <label for="player-one-name" class="form-input">Player One Name:</label>
+                            <input type="text" class="form-text-input" id="player-one-name" placeholder="Player 1" maxlength="20" minlength="1">
+                            <p class="error-msg" id="player-one-name-error"></p>
+                        </div>
+                        <div id="player-two-input-container" class="player-inputs">
+                            <label for="player-two-name" class="form-input">Player Two Name:</label>
+                            <input type="text" class="form-text-input" id="player-two-name" placeholder="Player 2" maxlength="20" minlength="1">
+                            <p class="error-msg" id="player-two-name-error"></p>
+                        </div>
                     </div>
                 </div>
 

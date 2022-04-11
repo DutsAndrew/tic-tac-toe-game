@@ -27,11 +27,6 @@ const _gameForm = (function() {
             gameFormOpen = false;
         }
     }
-//    gameForm.onkeydown = function() {
-//        if (window.event.keyCode == '13') {
-//            _submitSettings();
-//        }
-//    }
 
     // Controls for when Players are being selected
     const playerTwoContainer = document.querySelector('#player-two-input-container');
@@ -79,8 +74,6 @@ const _gameForm = (function() {
 
         let playerOneName = document.querySelector('#player-one-name').value;
         let playerTwoName = document.querySelector('#player-two-name').value;
-        let storePlayerOneName;
-        let storePlayerTwoName;
 
         if (gameMode == 0) {
             gameForm.reset();
@@ -97,41 +90,49 @@ const _gameForm = (function() {
             if (playerOneSymbolChoice === 1) {
                 displaySymbolPlayerOne.textContent = "Sword 🗡️";
                 displaySymbolPlayerTwo.textContent = "Shield 🛡️";
-            } else if (playerOneSymbolChoice === 2) {
-                displaySymbolPlayerOne.textContent = "Shield 🛡️";
-                displaySymbolPlayerTwo.textContent = "Sword 🗡️";
+                const playerOne = playerFactory(`${playerOneName}, 0, 0, 'Sword 🗡️'`);
+                const playerTwo = playerFactory(`'Computer', 0, 0, 'Shield 🛡️'`);
+                gameForm.reset();
+                _closeForm();
+                return {playerOne, playerTwo}
             }
+        } else if (playerOneSymbolChoice === 2) {
+            displaySymbolPlayerOne.textContent = "Shield 🛡️";
+            displaySymbolPlayerTwo.textContent = "Sword 🗡️";
+            const playerOne = playerFactory(`${playerOneName}, 0, 0, 'Shield 🛡️'`);
+            const playerTwo = playerFactory(`'Computer', 0, 0, 'Sword 🗡️'`);
             gameForm.reset();
             _closeForm();
+            return {playerOne, playerTwo}
         } else if (gameMode == 2 && playerOneName != "" && playerTwoName != "") {
             displayNamePlayerOne.textContent = `${playerOneName}`;
             displayNamePlayerTwo.textContent = `${playerTwoName}`;
             if (playerOneSymbolChoice === 1) {
                 displaySymbolPlayerOne.textContent = "Sword 🗡️";
                 displaySymbolPlayerTwo.textContent = "Shield 🛡️";
-            } else if (playerOneSymbolChoice === 2) {
-                displaySymbolPlayerOne.textContent = "Shield 🛡️";
-                displaySymbolPlayerTwo.textContent = "Sword 🗡️";
+                const playerOne = playerFactory(`${playerOneName}, 0, 0, 'Sword 🗡️'`);
+                const playerTwo = playerFactory(`'Computer', 0, 0, 'Shield 🛡️'`);
+                gameForm.reset();
+                _closeForm();
+                return {playerOne, playerTwo}
             }
+        } else if (playerOneSymbolChoice === 2) {
+            displaySymbolPlayerOne.textContent = "Shield 🛡️";
+            displaySymbolPlayerTwo.textContent = "Sword 🗡️";
+            const playerOne = playerFactory(`${playerOneName}, 0, 0, 'Shield 🛡️'`);
+            const playerTwo = playerFactory(`'Computer', 0, 0, 'Sword 🗡️'`);
             gameForm.reset();
             _closeForm();
-        } else {
-            location.reload();
-        }
-
-        if (storePlayerOneName !== "" && storePlayerTwoName !== "") {
-            const playerOne = playerFactory(`${storePlayerOneName}, 0, 0`);
-            const playerTwo = playerFactory(`${storePlayerTwoName}, 0, 0`);
             return {
                 playerOne,
-                playerTwo,
-            };
-        } else if (storePlayerOneName !== "" && storePlayerTwoName === "") {
-            const playerOne = playerFactory(`${storePlayerOneName}, 0, 0`);
-            return { 
-                playerOne, 
-                playerTwo,
-            };
+                playerTwo
+            }
+        } else {
+            location.reload();
+        } 
+        return {
+            playerOne,
+            playerTwo,
         }
     }
 })();

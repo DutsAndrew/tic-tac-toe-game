@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300&display=swap');
 
 :root {
-    --cell-size: 10rem;
+    --cell-size: 8rem;
     --symbol-size: cal(var(-cell-size) * .9);
 }
 
@@ -64,7 +64,7 @@
     background-color: #3c5453;
     display: flex;
     flex-flow: column wrap;
-    width: 100rem;
+    width: 100vw;
     height: 80vh;
     justify-content: flex-start;
     align-items: center;
@@ -197,8 +197,8 @@
     font-weight: 900;
     font-size: 1.3rem;
     background-color: #a17e4b;
-    height: 60vh;
-    width: 60vh;
+    height: 70vh;
+    width: 70vh;
     opacity: 0.85;
     border-radius: 15px;
     box-shadow: 2px 2px 2px #fbc362;
@@ -211,7 +211,6 @@
     flex-flow: column wrap;
     justify-content: center;
     align-items: center;
-    gap: 15px;
     padding: 10px;
     margin-top: 15px;
     margin-bottom: 15px;
@@ -240,6 +239,7 @@
     border: solid 2px #fbc362;
     padding: 5px;
     margin: 5px;
+    margin-bottom: 20px;
 }
 
 .player-inputs {

@@ -3,10 +3,12 @@ let playerOne;
 let playerTwo;
 
 // Creates and stores players
-const playerFactory = (name, wins, loses, symbol) => {
-    const playerInfo = () => console.log(`Player: ${name}, Wins: ${wins}, Loses: ${loses}, Symbol: ${symbol}`);
+const playerFactory = (name, wins, loses, symbol, tiles) => {
+    tiles = [];
+    const playerInfo = () => console.log(`Player: ${name}, Wins: ${wins}, Loses: ${loses}, Symbol: ${symbol}, Tiles: ${tiles}`);
     return { 
         name: name,
+        tiles: tiles,
         playerInfo,
     };
 };

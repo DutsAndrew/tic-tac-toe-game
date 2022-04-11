@@ -1,6 +1,22 @@
+// Creates and stores players
+const playerFactory = (name, wins, loses, symbol) => {
+    let playerOne;
+    let playerTwo;
+
+    const playerInfo = () => console.log(`Player: ${name}, Wins: ${wins}, Loses: ${loses}, Symbol: ${symbol}`);
+    return { 
+        name: name,
+        wins: wins,
+        loses: loses,
+        symbol: symbol,
+        playerInfo: playerInfo,
+        playerOne,
+        playerTwo,
+    };
+};
+
 // Handles all events and functions that involve starting or reseting the game
-const _gameForm = (function() {
-    'use strict';
+const gameForm = (function() {
 
     // functions to open and close the form
     const gameForm = document.querySelector('#game-start-form');
@@ -72,8 +88,8 @@ const _gameForm = (function() {
 
     function _submitSettings() {
 
-        let playerOneName = document.querySelector('#player-one-name').value;
-        let playerTwoName = document.querySelector('#player-two-name').value;
+        playerOneName = document.querySelector('#player-one-name').value;
+        playerTwoName = document.querySelector('#player-two-name').value;
 
         if (gameMode == 0) {
             gameForm.reset();
@@ -84,49 +100,44 @@ const _gameForm = (function() {
         } else if (gameMode == 2 && playerOneName == "" && playerTwoName == "") {
             gameForm.reset();
             alert("Either Player 1 or Player 2 do not have a name, please fix this to start the game");
-        } else if (gameMode == 1 && playerOneName != "") {
+        } else if (gameMode == 1 && playerOneSymbolChoice == 1 && playerOneName != "") {
             displayNamePlayerOne.textContent = `${playerOneName}`;
             displayNamePlayerTwo.textContent = "Computer";
-            if (playerOneSymbolChoice === 1) {
-                displaySymbolPlayerOne.textContent = "Sword 🗡️";
-                displaySymbolPlayerTwo.textContent = "Shield 🛡️";
-                const playerOne = playerFactory(`${playerOneName}, 0, 0, 'Sword 🗡️'`);
-                const playerTwo = playerFactory(`'Computer', 0, 0, 'Shield 🛡️'`);
-                gameForm.reset();
-                _closeForm();
-                return {playerOne, playerTwo}
-            }
-        } else if (playerOneSymbolChoice === 2) {
-            displaySymbolPlayerOne.textContent = "Shield 🛡️";
-            displaySymbolPlayerTwo.textContent = "Sword 🗡️";
-            const playerOne = playerFactory(`${playerOneName}, 0, 0, 'Shield 🛡️'`);
-            const playerTwo = playerFactory(`'Computer', 0, 0, 'Sword 🗡️'`);
+            displaySymbolPlayerOne.textContent = "Sword 🗡️";
+            displaySymbolPlayerTwo.textContent = "Shield 🛡️";
+            playerOne = playerFactory(`${playerOneName}`, 0, 0, 'Sword 🗡️');
+            playerTwo = playerFactory('Computer', 0, 0, 'Shield 🛡️');
             gameForm.reset();
             _closeForm();
             return {playerOne, playerTwo}
-        } else if (gameMode == 2 && playerOneName != "" && playerTwoName != "") {
-            displayNamePlayerOne.textContent = `${playerOneName}`;
-            displayNamePlayerTwo.textContent = `${playerTwoName}`;
-            if (playerOneSymbolChoice === 1) {
-                displaySymbolPlayerOne.textContent = "Sword 🗡️";
-                displaySymbolPlayerTwo.textContent = "Shield 🛡️";
-                const playerOne = playerFactory(`${playerOneName}, 0, 0, 'Sword 🗡️'`);
-                const playerTwo = playerFactory(`'Computer', 0, 0, 'Shield 🛡️'`);
-                gameForm.reset();
-                _closeForm();
-                return {playerOne, playerTwo}
-            }
-        } else if (playerOneSymbolChoice === 2) {
+        } else if (playerOneSymbolChoice == 2 && playerTwoSymbolChoice == 1 && gameMode == 1 && playerOneName != "") {
             displaySymbolPlayerOne.textContent = "Shield 🛡️";
             displaySymbolPlayerTwo.textContent = "Sword 🗡️";
-            const playerOne = playerFactory(`${playerOneName}, 0, 0, 'Shield 🛡️'`);
-            const playerTwo = playerFactory(`'Computer', 0, 0, 'Sword 🗡️'`);
+            playerOne = playerFactory(`${playerOneName}`, 0, 0, 'Shield 🛡️');
+            playerTwo = playerFactory('Computer', 0, 0, 'Sword 🗡️');
             gameForm.reset();
             _closeForm();
-            return {
-                playerOne,
-                playerTwo
-            }
+            return {playerOne, playerTwo}
+        } else if (gameMode == 2 && playerOneSymbolChoice == 1 && playerTwoSymbolChoice == 2 && playerOneName != "" && playerTwoName != "") {
+            displayNamePlayerOne.textContent = `${playerOneName}`;
+            displayNamePlayerTwo.textContent = `${playerTwoName}`;
+            displaySymbolPlayerOne.textContent = "Sword 🗡️";
+            displaySymbolPlayerTwo.textContent = "Shield 🛡️";
+            playerOne = playerFactory(`${playerOneName}`, 0, 0, 'Sword 🗡️');
+            playerTwo = playerFactory(`${playerTwoName}`, 0, 0, 'Shield 🛡️');
+            gameForm.reset();
+            _closeForm();
+            return {playerOne, playerTwo}
+        } else if (gameMode == 2 && playerOneSymbolChoice == 2 && playerTwoSymbolChoice == 1 && gameMode == 2 && playerOneName != "" && playerTwoName !== "") {
+            displayNamePlayerOne.textContent = `${playerOneName}`;
+            displayNamePlayerTwo.textContent = `${playerTwoName}`;
+            displaySymbolPlayerOne.textContent = "Shield 🛡️";
+            displaySymbolPlayerTwo.textContent = "Sword 🗡️";
+            playerOne = playerFactory(`${playerOneName}`, 0, 0, 'Shield 🛡️');
+            playerTwo = playerFactory(`${playerTwoName}`, 0, 0, 'Sword 🗡️');
+            gameForm.reset();
+            _closeForm();
+            return {playerOne, playerTwo}
         } else {
             location.reload();
         } 
@@ -162,20 +173,8 @@ function findGameSymbol() {
 
     for (i = 0; i < finder.length; i++) {
         if (finder[i].checked) {
-            let playerOneSymbol = i;
+            playerOneSymbol = i;
             return playerOneSymbol;
         }
     }
 }
-
-// Creates and stores players
-const playerFactory = (name, wins, loses, symbol) => {
-    const playerInfo = () => console.log(`Player: ${name}, Wins: ${wins}, Loses: ${loses}, Symbol: ${symbol}`);
-    return { 
-        name: name,
-        wins: wins,
-        loses: loses,
-        symbol: symbol,
-        playerInfo: playerInfo,
-    };
-};

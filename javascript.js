@@ -1,23 +1,18 @@
+// Player Variables for Game
+let playerOne;
+let playerTwo;
+
 // Creates and stores players
 const playerFactory = (name, wins, loses, symbol) => {
-    let playerOne;
-    let playerTwo;
-
     const playerInfo = () => console.log(`Player: ${name}, Wins: ${wins}, Loses: ${loses}, Symbol: ${symbol}`);
     return { 
         name: name,
-        wins: wins,
-        loses: loses,
-        symbol: symbol,
-        playerInfo: playerInfo,
-        playerOne,
-        playerTwo,
+        playerInfo,
     };
 };
 
 // Handles all events and functions that involve starting or reseting the game
 const gameForm = (function() {
-
     // functions to open and close the form
     const gameForm = document.querySelector('#game-start-form');
     const startGameButton = document.querySelector('#start-game');
@@ -88,8 +83,8 @@ const gameForm = (function() {
 
     function _submitSettings() {
 
-        playerOneName = document.querySelector('#player-one-name').value;
-        playerTwoName = document.querySelector('#player-two-name').value;
+        let playerOneName = document.querySelector('#player-one-name').value;
+        let playerTwoName = document.querySelector('#player-two-name').value;
 
         if (gameMode == 0) {
             gameForm.reset();

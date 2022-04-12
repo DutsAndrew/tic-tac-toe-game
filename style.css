@@ -76,29 +76,42 @@
     visibility: visible;
     flex-flow: column wrap;
     width: 30rem;
+    height: 66.55vh;
+    padding: 20px;
     justify-content: flex-start;
     align-items: center;
-    padding: 20px;
 }
 
 .player-icon {
     border-radius: 50%;
-    height: 8rem;
-    width: 8rem;
+    height: 7rem;
+    width: 7rem;
 }
 
-.player-name-text, .game-tracker-text, .player-quote-text {
-    font-size: 2rem;
+.player-name-text, .game-tracker-text, .player-quote-text, .players-symbol-choice {
+    font-size: 1.5rem;
     color: #572824;
     font-weight: 500;
+}
+
+.turn-text {
+    font-size: 1.5rem;
+    color: #572824;
+    font-weight: 500;
+    border: 2px solid black;
+    padding: 5px;
 }
 
 .player-quote-text {
     display: none;
 }
 
-.players-symbol-choice {
-    font-size: 2rem;
+#player-one {
+    display: flex;
+}
+
+#player-two {
+    display: flex;
 }
 
 /* GAMEBOARD GAMEBOARD GAMEBOARD GAMEBOARD GAMEBOARD GAMEBOARD GAMEBOARD GAMEBOARD GAMEBOARD GAMEBOARD GAMEBOARD GAMEBOARD GAMEBOARD */
@@ -275,8 +288,30 @@
     position: fixed;
     left: 0;
     bottom: 0;
-    width: 100%;
+    width: 100vw;
     background-color: #a17e4b;
     color: #572824;
     text-align: center;
 }
+
+/* ANIMATIONS AND EXTRAS ANIMATIONS AND EXTRAS ANIMATIONS AND EXTRAS ANIMATIONS AND EXTRAS ANIMATIONS AND EXTRAS ANIMATIONS AND EXTRAS ANIMATIONS AND EXTRAS */
+
+.shakeItAnimation {
+    border: 10px solid black;
+    animation: shake 2s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+  }

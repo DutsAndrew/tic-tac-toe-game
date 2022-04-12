@@ -102,6 +102,8 @@ const gameForm = (function() {
             displayNamePlayerTwo.textContent = "Computer";
             displaySymbolPlayerOne.textContent = "Sword 🗡️";
             displaySymbolPlayerTwo.textContent = "Shield 🛡️";
+            displaySymbolPlayerOne.classList.add('player-name-text');
+            displaySymbolPlayerTwo.classList.add('player-name-text');
             playerOne = playerFactory(`${playerOneName}`, 0, 0, 'Sword 🗡️');
             playerTwo = playerFactory('Computer', 0, 0, 'Shield 🛡️');
             gameForm.reset();
@@ -110,6 +112,8 @@ const gameForm = (function() {
         } else if (playerOneSymbolChoice == 2 && playerTwoSymbolChoice == 1 && gameMode == 1 && playerOneName != "") {
             displaySymbolPlayerOne.textContent = "Shield 🛡️";
             displaySymbolPlayerTwo.textContent = "Sword 🗡️";
+            displaySymbolPlayerOne.classList.add('player-name-text');
+            displaySymbolPlayerTwo.classList.add('player-name-text');
             playerOne = playerFactory(`${playerOneName}`, 0, 0, 'Shield 🛡️');
             playerTwo = playerFactory('Computer', 0, 0, 'Sword 🗡️');
             gameForm.reset();
@@ -120,6 +124,8 @@ const gameForm = (function() {
             displayNamePlayerTwo.textContent = `${playerTwoName}`;
             displaySymbolPlayerOne.textContent = "Sword 🗡️";
             displaySymbolPlayerTwo.textContent = "Shield 🛡️";
+            displaySymbolPlayerOne.classList.add('player-name-text');
+            displaySymbolPlayerTwo.classList.add('player-name-text');
             playerOne = playerFactory(`${playerOneName}`, 0, 0, 'Sword 🗡️');
             playerTwo = playerFactory(`${playerTwoName}`, 0, 0, 'Shield 🛡️');
             gameForm.reset();
@@ -130,6 +136,8 @@ const gameForm = (function() {
             displayNamePlayerTwo.textContent = `${playerTwoName}`;
             displaySymbolPlayerOne.textContent = "Shield 🛡️";
             displaySymbolPlayerTwo.textContent = "Sword 🗡️";
+            displaySymbolPlayerOne.classList.add('player-name-text');
+            displaySymbolPlayerTwo.classList.add('player-name-text');
             playerOne = playerFactory(`${playerOneName}`, 0, 0, 'Shield 🛡️');
             playerTwo = playerFactory(`${playerTwoName}`, 0, 0, 'Sword 🗡️');
             gameForm.reset();
@@ -141,6 +149,43 @@ const gameForm = (function() {
         return {
             playerOne,
             playerTwo,
+        }
+    }
+})();
+
+const _playerTurn = (function() {
+
+    const playerOneDisplay = document.querySelector('#player-one');
+    const playerTwoDisplay = document.querySelector('#player-two');
+
+    const submitGameSettings = document.querySelector('#submit-game-settings');
+    submitGameSettings.addEventListener('click', whosTurnIsIt);
+
+    let playerTurn = 0;
+
+    function whosTurnIsIt() {
+        if (playerTurn == 0 || playerTurn == 2) {
+
+            playerTurn = 1;
+
+            const turnText = document.createElement("p");
+            turnText.classList.add('turn-text');
+            turnText.textContent = "It is Player One's Turn";
+
+            playerOneDisplay.classList.add('shakeItAnimation');
+
+            playerOneDisplay.appendChild(turnText);
+        } else if (playerTurn == 1) {
+
+            playerTurn = 2;
+
+            const turnText = document.createElement("p");
+            turnText.classList.add('turn-text');
+            turnText.textContent = "It is Player One's Turn";
+
+            playerTwoDisplay.classList.add('shakeItAnimation');
+
+            playerTwoDisplay.appendChild(turnText);
         }
     }
 })();

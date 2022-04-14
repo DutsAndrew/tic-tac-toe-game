@@ -1,39 +1,43 @@
 // Player Variables for Game
 let playerOne;
 let playerTwo;
+let playerOneSymbolChoice = 0;
+let playerTwoSymbolChoice = 0;
+let gameBoardArray = [];
 
 // Creates and stores players
 const playerFactory = (name, wins, loses, symbol, tiles) => {
     tiles = [];
-    const playerInfo = () => console.log(`Player: ${name}, Wins: ${wins}, Loses: ${loses}, Symbol: ${symbol}, Tiles: ${tiles}`);
+    const playerInfo = () => console.log(`Player: ${name}, Wins: ${wins}, Loses: ${loses}, Symbol: ${symbol}, Tiles: ${[tiles]}`);
     return { 
         name: name,
-        tiles: tiles,
+        tiles: [],
         playerInfo,
     };
 };
 
-// Handles all events and functions that involve starting or reseting the game
-const gameForm = (function() {
+// Handles all events, functions, and variables needed for game functionality
+const ticTacToeGame = (function() {
+    'use strict';
+
+    // Handles all events and functions that involve starting or reseting the game
     // functions to open and close the form
-    const gameForm = document.querySelector('#game-start-form');
     const startGameButton = document.querySelector('#start-game');
     const startGameForm = document.querySelector('#game-start-container');
     const closeGameForm = document.querySelector('#close-game-form');
 
-    startGameButton.addEventListener('click', _openForm);
-    closeGameForm.addEventListener('click', _closeForm);
+    startGameButton.addEventListener('click', openForm);
+    closeGameForm.addEventListener('click', closeForm);
 
     let gameFormOpen = false;
-
-    function _openForm() {
+    function openForm() {
         if (gameFormOpen === false) {
             console.log("start game has been clicked");
             startGameForm.style.display = "flex";
             gameFormOpen = true;
         }
     }
-    function _closeForm() {
+    function closeForm() {
         if (gameFormOpen === true) {
             console.log("Close game form button has been clicked");
             startGameForm.style.display = "none";
@@ -42,6 +46,7 @@ const gameForm = (function() {
     }
 
     // Controls for when Players are being selected
+    const gameForm = document.querySelector('#game-start-form');
     const playerTwoContainer = document.querySelector('#player-two-input-container');
 
     let gameMode = 0;
@@ -60,8 +65,7 @@ const gameForm = (function() {
     }
 
     // Assigns symbol choices to players in the game
-    let playerOneSymbolChoice = 0;
-    let playerTwoSymbolChoice = 0;
+    //placeholder for symbol choice variables
 
     const playerChoiceSword = document.querySelector('#symbol-sword').onclick = function() {
         playerOneSymbolChoice = 1;
@@ -74,7 +78,7 @@ const gameForm = (function() {
         console.log("Player One, has chosen 'Shield', and Player Two has chosen 'Sword'");
     }
 
-    // Handles setting up game when submitting form
+    // Handles and stores game settings when submitting the game form
     const submitGameSettings = document.querySelector('#submit-game-settings');
     const displayNamePlayerOne = document.querySelector('#player-one-name-display');
     const displayNamePlayerTwo = document.querySelector('#player-two-name-display');
@@ -107,9 +111,11 @@ const gameForm = (function() {
             playerOne = playerFactory(`${playerOneName}`, 0, 0, 'Sword 🗡️');
             playerTwo = playerFactory('Computer', 0, 0, 'Shield 🛡️');
             gameForm.reset();
-            _closeForm();
+            closeForm();
             return {playerOne, playerTwo}
-        } else if (playerOneSymbolChoice == 2 && playerTwoSymbolChoice == 1 && gameMode == 1 && playerOneName != "") {
+        } else if (gameMode == 1 && playerOneSymbolChoice == 2 && playerTwoSymbolChoice == 1 && playerOneName != "") {
+            displayNamePlayerOne.textContent = `${playerOneName}`;
+            displayNamePlayerTwo.textContent = "Computer";
             displaySymbolPlayerOne.textContent = "Shield 🛡️";
             displaySymbolPlayerTwo.textContent = "Sword 🗡️";
             displaySymbolPlayerOne.classList.add('player-name-text');
@@ -117,7 +123,7 @@ const gameForm = (function() {
             playerOne = playerFactory(`${playerOneName}`, 0, 0, 'Shield 🛡️');
             playerTwo = playerFactory('Computer', 0, 0, 'Sword 🗡️');
             gameForm.reset();
-            _closeForm();
+            closeForm();
             return {playerOne, playerTwo}
         } else if (gameMode == 2 && playerOneSymbolChoice == 1 && playerTwoSymbolChoice == 2 && playerOneName != "" && playerTwoName != "") {
             displayNamePlayerOne.textContent = `${playerOneName}`;
@@ -129,7 +135,7 @@ const gameForm = (function() {
             playerOne = playerFactory(`${playerOneName}`, 0, 0, 'Sword 🗡️');
             playerTwo = playerFactory(`${playerTwoName}`, 0, 0, 'Shield 🛡️');
             gameForm.reset();
-            _closeForm();
+            closeForm();
             return {playerOne, playerTwo}
         } else if (gameMode == 2 && playerOneSymbolChoice == 2 && playerTwoSymbolChoice == 1 && gameMode == 2 && playerOneName != "" && playerTwoName !== "") {
             displayNamePlayerOne.textContent = `${playerOneName}`;
@@ -141,7 +147,7 @@ const gameForm = (function() {
             playerOne = playerFactory(`${playerOneName}`, 0, 0, 'Shield 🛡️');
             playerTwo = playerFactory(`${playerTwoName}`, 0, 0, 'Sword 🗡️');
             gameForm.reset();
-            _closeForm();
+            closeForm();
             return {playerOne, playerTwo}
         } else {
             location.reload();
@@ -151,62 +157,157 @@ const gameForm = (function() {
             playerTwo,
         }
     }
-})();
 
-const _playerTurn = (function() {
-
-    const playerOneDisplay = document.querySelector('#player-one');
-    const playerTwoDisplay = document.querySelector('#player-two');
-
-    const submitGameSettings = document.querySelector('#submit-game-settings');
-    submitGameSettings.addEventListener('click', whosTurnIsIt);
-
+    // Handles player turns in game
     let playerTurn = 0;
 
-    function whosTurnIsIt() {
-        if (playerTurn == 0 || playerTurn == 2) {
-
-            playerTurn = 1;
-
-            const turnText = document.createElement("p");
-            turnText.classList.add('turn-text');
-            turnText.textContent = "It is Player One's Turn";
-
-            playerOneDisplay.classList.add('shakeItAnimation');
-
-            playerOneDisplay.appendChild(turnText);
-        } else if (playerTurn == 1) {
-
-            playerTurn = 2;
-
-            const turnText = document.createElement("p");
-            turnText.classList.add('turn-text');
-            turnText.textContent = "It is Player One's Turn";
-
-            playerTwoDisplay.classList.add('shakeItAnimation');
-
-            playerTwoDisplay.appendChild(turnText);
+    const _playerTurn = (function() {
+        'use strict';
+    
+        const playerOneDisplay = document.querySelector('#player-one');
+        const playerTwoDisplay = document.querySelector('#player-two');
+    
+        const submitGameSettings = document.querySelector('#submit-game-settings');
+        submitGameSettings.addEventListener('click', whosTurnIsIt);
+    
+        function whosTurnIsIt() {
+            if (playerTurn == 0 || playerTurn == 2) {
+    
+                playerTurn = 1;
+    
+                const turnText = document.createElement("p");
+                turnText.classList.add('turn-text');
+                turnText.textContent = "It is Player One's Turn";
+    
+                playerOneDisplay.classList.add('shakeItAnimation');
+    
+                playerOneDisplay.appendChild(turnText);
+            } else if (playerTurn == 1) {
+    
+                playerTurn = 2;
+    
+                const turnText = document.createElement("p");
+                turnText.classList.add('turn-text');
+                turnText.textContent = "It is Player One's Turn";
+    
+                playerTwoDisplay.classList.add('shakeItAnimation');
+    
+                playerTwoDisplay.appendChild(turnText);
+            }
         }
-    }
-})();
+    })();
+    
+    // Handles all events and functions for reseting the game
+    const _resetGame = (function() {
+        'use strict';
+    
+        const resetGameButton = document.querySelector('#reset-game');
+        resetGameButton.addEventListener('click', reloadPage);
+    
+        function reloadPage() {
+            location.reload();
+        }
+    })();
+    
+    // Array to hold symbol placement of game
+    // Handles all events for the gameboard
+    const _gameBoard = (function() {
+        'use strict';
 
-// Handles all events and functions for reseting the game
-const _resetGame = (function() {
-    'use strict';
+        const gameBoardHTML = document.querySelector('#game-board');
+        gameBoardHTML.addEventListener('click', identifyBoardCell);
+    
+        // Identifies which cell on the board was clicked and sets the event.target.id to placeSymbol()
+        function identifyBoardCell(event) {
+            let selectedCell = event.target.id;
+            console.log(`${selectedCell}`);
+            cellToGameBoardArrayHandler(selectedCell);
+        }
 
-    const resetGameButton = document.querySelector('#reset-game');
-    resetGameButton.addEventListener('click', reloadPage);
+        // Places the symbol on the board for that player
+        function placeSymbol(selectedCell) {
+            if (playerTurn == 1 && playerOneSymbolChoice == 1) {
+                const swordSymbol = document.createElement("img");
+                swordSymbol.src = "./imgs/sword.svg";
+                swordSymbol.classList.add("sword-game-piece");
+            } else if (playerTurn == 1 && playerOneSymbolChoice == 2) {
+                const shieldSymbol = document.createElement("img");
+                shieldSymbol.src = "./imgs/shield.svg";
+                shieldSymbol.classList.add("shield-game-piece");
+            } else if (playerTurn == 2 && playerOneSymbolChoice == 1) {
+                const swordSymbol = document.createElement("img");
+                swordSymbol.src = "./imgs/sword.svg";
+                swordSymbol.classList.add("sword-game-piece");
+            } else if (playerTurn == 2 && playerOneSymbolChoice == 2) {
+                const shieldSymbol = document.createElement("img");
+                shieldSymbol.src = "./imgs/shield.svg";
+                shieldSymbol.classList.add("shield-game-piece");
+            } else {
+                console.log("Something went wrong");
+                return;
+            }
+        };
 
-    function reloadPage() {
-        location.reload();
-    }
-})();
-
-// Handles all events and functions that involve the gameboard
-const _gameBoard = (function() {
-    'use strict';
-
-
+        // Validates that gameBoardArray doesn't already have the cell placed on the board, then proceeds to push cell position into the array if it doesn't exist
+        function cellToGameBoardArrayHandler(selectedCell) {
+            if (selectedCell == "row1col1") {
+                if (gameBoardArray.includes(1, 0) === true) {
+                    return
+                } else if (gameBoardArray.includes(1, 0) === false) {
+                    gameBoardArray.push(1);
+                }
+            } else if (selectedCell == "row1col2") {
+                if (gameBoardArray.includes(2, 0) === true) {
+                    return
+                } else if (gameBoardArray.includes(2, 0) === false) {
+                    gameBoardArray.push(2);
+                }
+            } else if (selectedCell == "row1col3") {
+                if (gameBoardArray.includes(3, 0) === true) {
+                    return
+                } else if (gameBoardArray.includes(3, 0) === false) {
+                    gameBoardArray.push(3);
+                }
+            } else if (selectedCell == "row2col1") {
+                if (gameBoardArray.includes(4, 0) === true) {
+                    return
+                } else if (gameBoardArray.includes(4, 0) === false) {
+                    gameBoardArray.push(4);
+                }
+            } else if (selectedCell == "row2col2") {
+                if (gameBoardArray.includes(5, 0) === true) {
+                    return
+                } else if (gameBoardArray.includes(5, 0) === false) {
+                    gameBoardArray.push(5);
+                }
+            } else if (selectedCell == "row2col3") {
+                if (gameBoardArray.includes(6, 0) === true) {
+                    return
+                } else if (gameBoardArray.includes(6, 0) === false) {
+                    gameBoardArray.push(6);
+                }
+            } else if (selectedCell == "row3col1") {
+                if (gameBoardArray.includes(7, 0) === true) {
+                    return
+                } else if (gameBoardArray.includes(7, 0) === false) {
+                    gameBoardArray.push(7);
+                }
+            } else if (selectedCell == "row3col2") {
+                if (gameBoardArray.includes(8, 0) === true) {
+                    return
+                } else if (gameBoardArray.includes(8, 0) === false) {
+                    gameBoardArray.push(8);
+                }
+            } else if (selectedCell == "row3col3") {
+                if (gameBoardArray.includes(9, 0) === true) {
+                    return
+                } else if (gameBoardArray.includes(9, 0) === false) {
+                    gameBoardArray.push(9);
+                }
+            }
+            console.log(`${gameBoardArray}`);
+        }
+    })();
 })();
 
 // Finds the selected player symbol, declares a variable, and returns it for use

@@ -157,6 +157,14 @@
     border-bottom: none;
 }
 
+#sword-game-piece {
+    filter: invert(92%) sepia(92%) saturate(726%) hue-rotate(317deg) brightness(100%) contrast(98%);
+}
+
+#shield-game-piece {
+    filter: invert(31%) sepia(9%) saturate(1020%) hue-rotate(128deg) brightness(95%) contrast(94%);
+}
+
 /* GAME-START-FORM GAME-START-FORM GAME-START-FORM GAME-START-FORM GAME-START-FORM GAME-START-FORM GAME-START-FORM GAME-START-FORM */
 
 #game-start-container {

@@ -181,11 +181,12 @@ const ticTacToeGame = (function() {
         let playerTurn = 0;
 
         function whosTurnIsIt() {
+            const turnTextHandler = document.querySelector('.turn-text');
             const playerOneDisplay = document.querySelector('#player-one');
             const playerTwoDisplay = document.querySelector('#player-two');
             const turnTextP1 = document.createElement("p");
             const turnTextP2 = document.createElement("p");
-            const turnTextHandler = document.querySelector('.turn-text');
+            
 
             if (playerTurn == 0) {
                 playerTurn = 1;
@@ -225,13 +226,16 @@ const ticTacToeGame = (function() {
         function GameEventHandler(event) {
             if (gameMode == 0 ) {
                 return
-            } else if (gameMode != 0) {
+            } else if (gameMode != 0 && winner == "") {
                 selectedCell = event.target.id;
-                cellLocation = document.querySelector(`#${selectedCell}`);
+                cellLocation = document.querySelector( `#${selectedCell}`);
                 gameBoardCellHandler(selectedCell);
                 placeSymbol(cellLocation);
                 checkForWinConditions();
+                declareWinner();
                 turnCounter();
+            } else if (gameMode != 0 && winner !== "") {
+                return
             }
         }
 
@@ -380,77 +384,77 @@ const ticTacToeGame = (function() {
         }
 
 
-        let winner = null;
+        let winner = "";
         function checkForWinConditions() {
             if (gameBoardArray.includes(1.1, 0) && gameBoardArray.includes(4.1, 0) && gameBoardArray.includes(7.1)) {
                 winner = "p1";
-                declareWinner(winner);
             } else if (gameBoardArray.includes(1.2, 0) && gameBoardArray.includes(4.2, 0) && gameBoardArray.includes(7.2, 0)) {
                 winner = "p2";
-                declareWinner(winner);
             } else if (gameBoardArray.includes(2.1, 0) && gameBoardArray.includes(5.1, 0) && gameBoardArray.includes(8.1)) {
                 winner = "p1";
-                declareWinner(winner);
             } else if (gameBoardArray.includes(2.2, 0) && gameBoardArray.includes(5.2, 0) && gameBoardArray.includes(8.2, 0)) {
                 winner = "p2";
-                declareWinner(winner);
             } else if (gameBoardArray.includes(3.1, 0) && gameBoardArray.includes(6.1, 0) && gameBoardArray.includes(9.1)) {
                 winner = "p1";
-                declareWinner(winner);
             } else if (gameBoardArray.includes(3.2, 0) && gameBoardArray.includes(6.2, 0) && gameBoardArray.includes(9.2, 0)) {
                 winner = "p2";
-                declareWinner(winner);
             } else if (gameBoardArray.includes(1.1, 0) && gameBoardArray.includes(2.1, 0) && gameBoardArray.includes(3.1)) {
                 winner = "p1";
-                declareWinner(winner);
             } else if (gameBoardArray.includes(1.2, 0) && gameBoardArray.includes(2.2, 0) && gameBoardArray.includes(3.2, 0)) {
                 winner = "p2";
-                declareWinner(winner);
             } else if (gameBoardArray.includes(4.1, 0) && gameBoardArray.includes(5.1, 0) && gameBoardArray.includes(6.1)) {
                 winner = "p1";
-                declareWinner(winner);
             } else if (gameBoardArray.includes(4.2, 0) && gameBoardArray.includes(5.2, 0) && gameBoardArray.includes(6.2, 0)) {
                 winner = "p2";
-                declareWinner(winner);
             } else if (gameBoardArray.includes(7.1, 0) && gameBoardArray.includes(8.1, 0) && gameBoardArray.includes(9.1)) {
                 winner = "p1";
-                declareWinner(winner);
             } else if (gameBoardArray.includes(7.2, 0) && gameBoardArray.includes(8.2, 0) && gameBoardArray.includes(9.2, 0)) {
                 winner = "p2";
-                declareWinner(winner);
             } else if (gameBoardArray.includes(1.1, 0) && gameBoardArray.includes(4.1, 0) && gameBoardArray.includes(7.1)) {
                 winner = "p1";
-                declareWinner(winner);
             } else if (gameBoardArray.includes(1.2, 0) && gameBoardArray.includes(4.2, 0) && gameBoardArray.includes(7.2, 0)) {
                 winner = "p2";
-                declareWinner(winner);
             } else if (gameBoardArray.includes(1.1, 0) && gameBoardArray.includes(5.1, 0) && gameBoardArray.includes(9.1)) {
                 winner = "p1";
-                declareWinner(winner);
             } else if (gameBoardArray.includes(1.2, 0) && gameBoardArray.includes(5.2, 0) && gameBoardArray.includes(9.2, 0)) {
                 winner = "p2";
-                declareWinner(winner);
             }
         }
 
         function declareWinner() {
+            const playerOneTracker = document.querySelector('#player-one-tracker');
+            const playerTwoTracker = document.querySelector('#player-two-tracker');
+
+            let playerOneWins = 0;
+            let playerOneLoses = 0;
+            let playerTwoWins = 0;
+            let playerTwoLoses = 0;
+
             if (winner == "p1") {
+                playerTurn = "hold";
+                removeTurnAnimations();
+                playerOneWins++;
+                playerTwoLoses++;
                 console.log("Player one Wins!");
             } else if (winner == "p2") {
+                playerTurn = "hold";
+                removeTurnAnimations();
+                playerTwoWins++;
+                playerOneLoses++;
                 console.log("Player Two Wins!");
             }
+            playerOneTracker.textContent = `Wins: ${playerOneWins} | Loses: ${playerOneLoses}`;
+            playerTwoTracker.textContent = `Wins: ${playerTwoWins} | Loses: ${playerTwoLoses}`;
+        }
+
+        function removeTurnAnimations() {
+            const turnTextHandler = document.querySelector('.turn-text');
+            const playerOneDisplay = document.querySelector('#player-one');
+            const playerTwoDisplay = document.querySelector('#player-two');
+            
+            turnTextHandler.remove();
+            playerOneDisplay.classList.remove('shakeItAnimation');
+            playerTwoDisplay.classList.remove('shakeItAnimation');
         }
     })();
 })();
-
-// Finds the selected player symbol, declares a variable, and returns it for use
-function findGameSymbol() {
-    let finder = document.getElementsByName('symbol-choice-selector');
-
-    for (i = 0; i < finder.length; i++) {
-        if (finder[i].checked) {
-            playerOneSymbol = i;
-            return playerOneSymbol;
-        }
-    }
-}

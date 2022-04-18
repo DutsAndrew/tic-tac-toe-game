@@ -2,6 +2,8 @@
 let playerOne;
 let playerTwo;
 let gameBoardArray = [];
+let playerOneGameCells = [];
+let playerTwoGameCells = [];
 
 // Creates and stores players
 const playerFactory = (name, wins, loses, symbol, tiles) => {
@@ -216,13 +218,13 @@ const ticTacToeGame = (function() {
         }
 
         const gameBoardHTML = document.querySelector('#game-board');
-        gameBoardHTML.addEventListener('click', identifyBoardCell);
+        gameBoardHTML.addEventListener('click', GameEventHandler);
 
         // Validates if game was started, and then identifies which cell on the board was clicked and sends it to the gameboard array through helper functions
         let selectedCell;
         let cellLocation;
 
-        function identifyBoardCell(event) {
+        function GameEventHandler(event) {
             if (gameMode == 0 ) {
                 return
             } else if (gameMode != 0) {
@@ -230,90 +232,119 @@ const ticTacToeGame = (function() {
                 cellLocation = document.querySelector(`#${selectedCell}`);
                 gameBoardCellHandler(selectedCell);
                 placeSymbol(cellLocation);
+                checkForWinConditions();
+                turnCounter();
             }
         }
 
         // Validates that gameBoardArray doesn't already have the cell placed on the board, then proceeds to push cell position into the array if it doesn't exist
 
-        function gameBoardCellHandler(selectedCell) {
+        function gameBoardCellHandler() {
             if (selectedCell == "row1col1") {
                 if (gameBoardArray.includes(1, 0) === true) {
                     alert("Whoops, that spot is taken");
                     return
                 } else if (gameBoardArray.includes(1, 0) === false) {
-                    gameBoardArray.push(1);
-                    turnCounter();
+                    if (playerTurn == 1) {
+                        gameBoardArray.push(1.1);
+                    } else if (playerTurn == 2) {
+                        gameBoardArray.push(1.2);
+                    }
                 }
             } else if (selectedCell == "row1col2") {
                 if (gameBoardArray.includes(2, 0) === true) {
                     alert("Whoops, that spot is taken");
                     return
                 } else if (gameBoardArray.includes(2, 0) === false) {
-                    gameBoardArray.push(2);
-                    turnCounter();
+                    if (playerTurn == 1) {
+                        gameBoardArray.push(2.1);
+                    } else if (playerTurn == 2) {
+                        gameBoardArray.push(2.2);
+                    }
                 }
             } else if (selectedCell == "row1col3") {
                 if (gameBoardArray.includes(3, 0) === true) {
                     alert("Whoops, that spot is taken");
                     return
                 } else if (gameBoardArray.includes(3, 0) === false) {
-                    gameBoardArray.push(3);
-                    turnCounter();
+                    if (playerTurn == 1) {
+                        gameBoardArray.push(3.1);
+                    } else if (playerTurn == 2) {
+                        gameBoardArray.push(3.2);
+                    }
                 }
             } else if (selectedCell == "row2col1") {
                 if (gameBoardArray.includes(4, 0) === true) {
                     alert("Whoops, that spot is taken");
                     return
                 } else if (gameBoardArray.includes(4, 0) === false) {
-                    gameBoardArray.push(4);
-                    turnCounter();
+                    if (playerTurn == 1) {
+                        gameBoardArray.push(4.1);
+                    } else if (playerTurn == 2) {
+                        gameBoardArray.push(4.2);
+                    }
                 }
             } else if (selectedCell == "row2col2") {
                 if (gameBoardArray.includes(5, 0) === true) {
                     alert("Whoops, that spot is taken");
                     return
                 } else if (gameBoardArray.includes(5, 0) === false) {
-                    gameBoardArray.push(5);
-                    turnCounter();
+                    if (playerTurn == 1) {
+                        gameBoardArray.push(5.1);
+                    } else if (playerTurn == 2) {
+                        gameBoardArray.push(5.2);
+                    }
                 }
             } else if (selectedCell == "row2col3") {
                 if (gameBoardArray.includes(6, 0) === true) {
                     alert("Whoops, that spot is taken");
                     return
                 } else if (gameBoardArray.includes(6, 0) === false) {
-                    gameBoardArray.push(6);
-                    turnCounter();
+                    if (playerTurn == 1) {
+                        gameBoardArray.push(6.1);
+                    } else if (playerTurn == 2) {
+                        gameBoardArray.push(6.2);
+                    }
                 }
             } else if (selectedCell == "row3col1") {
                 if (gameBoardArray.includes(7, 0) === true) {
                     alert("Whoops, that spot is taken");
                     return
                 } else if (gameBoardArray.includes(7, 0) === false) {
-                    gameBoardArray.push(7);
-                    turnCounter();
+                    if (playerTurn == 1) {
+                        gameBoardArray.push(7.1);
+                    } else if (playerTurn == 2) {
+                        gameBoardArray.push(7.2);
+                    }
                 }
             } else if (selectedCell == "row3col2") {
                 if (gameBoardArray.includes(8, 0) === true) {
                     alert("Whoops, that spot is taken");
                     return
                 } else if (gameBoardArray.includes(8, 0) === false) {
-                    gameBoardArray.push(8);
-                    turnCounter();
+                    if (playerTurn == 1) {
+                        gameBoardArray.push(8.1);
+                    } else if (playerTurn == 2) {
+                        gameBoardArray.push(8.2);
+                    }
                 }
             } else if (selectedCell == "row3col3") {
                 if (gameBoardArray.includes(9, 0) === true) {
                     alert("Whoops, that spot is taken");
                     return
                 } else if (gameBoardArray.includes(9, 0) === false) {
-                    gameBoardArray.push(9);
-                    turnCounter();
+                    if (playerTurn == 1) {
+                        gameBoardArray.push(9.1);
+                    } else if (playerTurn == 2) {
+                        gameBoardArray.push(9.2);
+                    }
                 }
             }
             console.log(`${gameBoardArray}`);
         }
 
         // Assigns symbol imgs and class to be placed on board
-        function placeSymbol(cellLocation) {
+        function placeSymbol() {
             if (playerTurn == 1 && playerOneSymbolChoice == 1) {
                 let swordSymbol = document.createElement("img");
                     swordSymbol.src = "./imgs/sword.svg";
@@ -348,6 +379,10 @@ const ticTacToeGame = (function() {
                 playerTurn = 1;
             }
             whosTurnIsIt();
+        }
+
+        function checkForWinConditions() {
+
         }
     })();
 })();

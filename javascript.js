@@ -218,84 +218,93 @@ const ticTacToeGame = (function() {
         const gameBoardHTML = document.querySelector('#game-board');
         gameBoardHTML.addEventListener('click', identifyBoardCell);
 
-        // Identifies which cell on the board was clicked and sets the event.target.id to placeSymbol()
+        // Validates if game was started, and then identifies which cell on the board was clicked and sends it to the gameboard array through helper functions
+        let selectedCell;
+        let cellLocation;
+
         function identifyBoardCell(event) {
-            let selectedCell = event.target.id;
-            console.log(`${selectedCell}`);
-            cellToGameBoardArrayHandler(selectedCell);
+            if (gameMode == 0 ) {
+                return
+            } else if (gameMode != 0) {
+                selectedCell = event.target.id;
+                cellLocation = document.querySelector(`#${selectedCell}`);
+                gameBoardCellHandler(selectedCell);
+                placeSymbol(cellLocation);
+            }
         }
 
         // Validates that gameBoardArray doesn't already have the cell placed on the board, then proceeds to push cell position into the array if it doesn't exist
-        function cellToGameBoardArrayHandler(selectedCell) {
+
+        function gameBoardCellHandler(selectedCell) {
             if (selectedCell == "row1col1") {
                 if (gameBoardArray.includes(1, 0) === true) {
+                    alert("Whoops, that spot is taken");
                     return
                 } else if (gameBoardArray.includes(1, 0) === false) {
-                    placeSymbol(selectedCell);
                     gameBoardArray.push(1);
                     turnCounter();
                 }
             } else if (selectedCell == "row1col2") {
                 if (gameBoardArray.includes(2, 0) === true) {
+                    alert("Whoops, that spot is taken");
                     return
                 } else if (gameBoardArray.includes(2, 0) === false) {
-                    placeSymbol(selectedCell);
                     gameBoardArray.push(2);
                     turnCounter();
                 }
             } else if (selectedCell == "row1col3") {
                 if (gameBoardArray.includes(3, 0) === true) {
+                    alert("Whoops, that spot is taken");
                     return
                 } else if (gameBoardArray.includes(3, 0) === false) {
-                    placeSymbol(selectedCell);
                     gameBoardArray.push(3);
                     turnCounter();
                 }
             } else if (selectedCell == "row2col1") {
                 if (gameBoardArray.includes(4, 0) === true) {
+                    alert("Whoops, that spot is taken");
                     return
                 } else if (gameBoardArray.includes(4, 0) === false) {
-                    placeSymbol(selectedCell);
                     gameBoardArray.push(4);
                     turnCounter();
                 }
             } else if (selectedCell == "row2col2") {
                 if (gameBoardArray.includes(5, 0) === true) {
+                    alert("Whoops, that spot is taken");
                     return
                 } else if (gameBoardArray.includes(5, 0) === false) {
-                    placeSymbol(selectedCell);
                     gameBoardArray.push(5);
                     turnCounter();
                 }
             } else if (selectedCell == "row2col3") {
                 if (gameBoardArray.includes(6, 0) === true) {
+                    alert("Whoops, that spot is taken");
                     return
                 } else if (gameBoardArray.includes(6, 0) === false) {
-                    placeSymbol(selectedCell);
                     gameBoardArray.push(6);
                     turnCounter();
                 }
             } else if (selectedCell == "row3col1") {
                 if (gameBoardArray.includes(7, 0) === true) {
+                    alert("Whoops, that spot is taken");
                     return
                 } else if (gameBoardArray.includes(7, 0) === false) {
-                    placeSymbol(selectedCell);
                     gameBoardArray.push(7);
                     turnCounter();
                 }
             } else if (selectedCell == "row3col2") {
                 if (gameBoardArray.includes(8, 0) === true) {
+                    alert("Whoops, that spot is taken");
                     return
                 } else if (gameBoardArray.includes(8, 0) === false) {
-                    placeSymbol(selectedCell);
                     gameBoardArray.push(8);
                     turnCounter();
                 }
             } else if (selectedCell == "row3col3") {
                 if (gameBoardArray.includes(9, 0) === true) {
+                    alert("Whoops, that spot is taken");
                     return
                 } else if (gameBoardArray.includes(9, 0) === false) {
-                    placeSymbol(selectedCell);
                     gameBoardArray.push(9);
                     turnCounter();
                 }
@@ -303,28 +312,28 @@ const ticTacToeGame = (function() {
             console.log(`${gameBoardArray}`);
         }
 
-        // Places the symbol on the board for that player
-        function placeSymbol(selectedCell, playerTurn, playerOneSymbolChoice, playerTwoSymbolChoice) {
+        // Assigns symbol imgs and class to be placed on board
+        function placeSymbol(cellLocation) {
             if (playerTurn == 1 && playerOneSymbolChoice == 1) {
-                const swordSymbol = document.createElement("img");
-                swordSymbol.src = "./imgs/sword.svg";
-                swordSymbol.classList.add("sword-game-piece");
-                selectedCell.appendChild(swordSymbol);
+                let swordSymbol = document.createElement("img");
+                    swordSymbol.src = "./imgs/sword.svg";
+                    swordSymbol.classList.add("sword-game-piece");
+                cellLocation.appendChild(swordSymbol);
             } else if (playerTurn == 1 && playerOneSymbolChoice == 2) {
-                const shieldSymbol = document.createElement("img");
-                shieldSymbol.src = "./imgs/shield.svg";
-                shieldSymbol.classList.add("shield-game-piece");
-                selectedCell.appendChild(shieldSymbol);
+                let shieldSymbol = document.createElement("img");
+                    shieldSymbol.src = "./imgs/shield.svg";
+                    shieldSymbol.classList.add("shield-game-piece");
+                cellLocation.appendChild(shieldSymbol);
             } else if (playerTurn == 2 && playerTwoSymbolChoice == 1) {
-                const swordSymbol = document.createElement("img");
-                swordSymbol.src = "./imgs/sword.svg";
-                swordSymbol.classList.add("sword-game-piece");
-                selectedCell.appendChild(swordSymbol);
+                let swordSymbol = document.createElement("img");
+                    swordSymbol.src = "./imgs/sword.svg";
+                    swordSymbol.classList.add("sword-game-piece");
+                cellLocation.appendChild(swordSymbol);
             } else if (playerTurn == 2 && playerTwoSymbolChoice == 2) {
-                const shieldSymbol = document.createElement("img");
-                shieldSymbol.src = "./imgs/shield.svg";
-                shieldSymbol.classList.add("shield-game-piece");
-                selectedCell.appendChild(shieldSymbol);
+                let shieldSymbol = document.createElement("img");
+                    shieldSymbol.src = "./imgs/shield.svg";
+                    shieldSymbol.classList.add("shield-game-piece");
+                cellLocation.appendChild(shieldSymbol);
             } else {
                 console.log("Something went wrong");
                 return;
@@ -339,7 +348,6 @@ const ticTacToeGame = (function() {
                 playerTurn = 1;
             }
             whosTurnIsIt();
-            console.log(`${playerTurn}`);
         }
     })();
 })();

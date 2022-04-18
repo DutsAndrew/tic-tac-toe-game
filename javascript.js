@@ -2,8 +2,6 @@
 let playerOne;
 let playerTwo;
 let gameBoardArray = [];
-let playerOneGameCells = [];
-let playerTwoGameCells = [];
 
 // Creates and stores players
 const playerFactory = (name, wins, loses, symbol, tiles) => {
@@ -381,8 +379,66 @@ const ticTacToeGame = (function() {
             whosTurnIsIt();
         }
 
-        function checkForWinConditions() {
 
+        let winner = null;
+        function checkForWinConditions() {
+            if (gameBoardArray.includes(1.1, 0) && gameBoardArray.includes(4.1, 0) && gameBoardArray.includes(7.1)) {
+                winner = "p1";
+                declareWinner(winner);
+            } else if (gameBoardArray.includes(1.2, 0) && gameBoardArray.includes(4.2, 0) && gameBoardArray.includes(7.2, 0)) {
+                winner = "p2";
+                declareWinner(winner);
+            } else if (gameBoardArray.includes(2.1, 0) && gameBoardArray.includes(5.1, 0) && gameBoardArray.includes(8.1)) {
+                winner = "p1";
+                declareWinner(winner);
+            } else if (gameBoardArray.includes(2.2, 0) && gameBoardArray.includes(5.2, 0) && gameBoardArray.includes(8.2, 0)) {
+                winner = "p2";
+                declareWinner(winner);
+            } else if (gameBoardArray.includes(3.1, 0) && gameBoardArray.includes(6.1, 0) && gameBoardArray.includes(9.1)) {
+                winner = "p1";
+                declareWinner(winner);
+            } else if (gameBoardArray.includes(3.2, 0) && gameBoardArray.includes(6.2, 0) && gameBoardArray.includes(9.2, 0)) {
+                winner = "p2";
+                declareWinner(winner);
+            } else if (gameBoardArray.includes(1.1, 0) && gameBoardArray.includes(2.1, 0) && gameBoardArray.includes(3.1)) {
+                winner = "p1";
+                declareWinner(winner);
+            } else if (gameBoardArray.includes(1.2, 0) && gameBoardArray.includes(2.2, 0) && gameBoardArray.includes(3.2, 0)) {
+                winner = "p2";
+                declareWinner(winner);
+            } else if (gameBoardArray.includes(4.1, 0) && gameBoardArray.includes(5.1, 0) && gameBoardArray.includes(6.1)) {
+                winner = "p1";
+                declareWinner(winner);
+            } else if (gameBoardArray.includes(4.2, 0) && gameBoardArray.includes(5.2, 0) && gameBoardArray.includes(6.2, 0)) {
+                winner = "p2";
+                declareWinner(winner);
+            } else if (gameBoardArray.includes(7.1, 0) && gameBoardArray.includes(8.1, 0) && gameBoardArray.includes(9.1)) {
+                winner = "p1";
+                declareWinner(winner);
+            } else if (gameBoardArray.includes(7.2, 0) && gameBoardArray.includes(8.2, 0) && gameBoardArray.includes(9.2, 0)) {
+                winner = "p2";
+                declareWinner(winner);
+            } else if (gameBoardArray.includes(1.1, 0) && gameBoardArray.includes(4.1, 0) && gameBoardArray.includes(7.1)) {
+                winner = "p1";
+                declareWinner(winner);
+            } else if (gameBoardArray.includes(1.2, 0) && gameBoardArray.includes(4.2, 0) && gameBoardArray.includes(7.2, 0)) {
+                winner = "p2";
+                declareWinner(winner);
+            } else if (gameBoardArray.includes(1.1, 0) && gameBoardArray.includes(5.1, 0) && gameBoardArray.includes(9.1)) {
+                winner = "p1";
+                declareWinner(winner);
+            } else if (gameBoardArray.includes(1.2, 0) && gameBoardArray.includes(5.2, 0) && gameBoardArray.includes(9.2, 0)) {
+                winner = "p2";
+                declareWinner(winner);
+            }
+        }
+
+        function declareWinner() {
+            if (winner == "p1") {
+                console.log("Player one Wins!");
+            } else if (winner == "p2") {
+                console.log("Player Two Wins!");
+            }
         }
     })();
 })();

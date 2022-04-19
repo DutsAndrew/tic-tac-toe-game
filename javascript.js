@@ -446,6 +446,7 @@ const ticTacToeGame = (function() {
                 playerTwoTracker.textContent = `Wins: ${playerTwoWins} | Loses: ${playerTwoLoses}`;
 
                 turnCounter();
+                roundOver();
             } else if (winner == "p2") {
                 playerTurn = "hold";
                 winner = "";
@@ -458,6 +459,7 @@ const ticTacToeGame = (function() {
                 playerTwoTracker.textContent = `Wins: ${playerTwoWins} | Loses: ${playerTwoLoses}`;
 
                 turnCounter();
+                roundOver();
             } else if (winner == "no one") {
                 playerTurn = "hold";
                 removeTurnAnimations();
@@ -467,6 +469,7 @@ const ticTacToeGame = (function() {
                 playerTwoTracker.textContent = `Wins: ${playerTwoWins} | Loses: ${playerTwoLoses}`;
 
                 turnCounter();
+                roundOver();
             }
         }
 
@@ -478,6 +481,38 @@ const ticTacToeGame = (function() {
             turnTextHandler.remove();
             playerOneDisplay.classList.remove('shakeItAnimation');
             playerTwoDisplay.classList.remove('shakeItAnimation');
+        }
+
+        const roundOver = function() {
+            const header = document.querySelector('#header');
+            const contentContainer = document.querySelector('#content-container');
+            const continueGameContainer = document.querySelector('#continue-game-container');
+            const continueGameButton = document.querySelector('#continue-game-button');
+            const stopGameButton = document.querySelector('#stop-game-button');
+
+            header.style.visibility = "hidden";
+            header.style.position = "absolute";
+            contentContainer.style.visibility = "hidden";
+            contentContainer.style.position = "absolute";
+
+            continueGameContainer.style.visibility = "visible";
+            continueGameContainer.style.position = "relative";
+
+            continueGameButton.addEventListener('click', _continueGame);
+            function _continueGame() {
+
+            }
+
+            stopGameButton.addEventListener('click', _stopGame);
+            function _stopGame() {
+                header.style.visibility = "visible";
+                header.style.position = "relative";
+                contentContainer.style.visibility = "visible";
+                contentContainer.style.position = "relative";
+
+                continueGameContainer.style.visibility = "hidden";
+                continueGameContainer.style.position = "absolute";
+            }
         }
     })();
 })();

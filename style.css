@@ -24,6 +24,9 @@
     width: 100vw;
     height: 10rem;
     line-height: 0%;
+
+    position: relative;
+    visibility: visible;
 }
 
 #button-container {
@@ -50,7 +53,7 @@
 
 /* CENTER-CONSOLE CENTER-CONSOLE CENTER-CONSOLE CENTER-CONSOLE CENTER-CONSOLE CENTER-CONSOLE CENTER-CONSOLE CENTER-CONSOLE */
 
-#body {
+#content-container {
     display: flex;
     flex-flow: row nowrap;
     width: 100vw;
@@ -58,6 +61,9 @@
     flex: auto;
     margin: auto;
     background-color: #fbcc5f;
+
+    position: relative;
+    visibility: visible;
 }
 
 #center-console {
@@ -73,7 +79,6 @@
 .player-card {
     background-color: #fbcc5f;
     display: flex;
-    visibility: visible;
     flex-flow: column wrap;
     width: 30rem;
     height: 66.55vh;
@@ -289,6 +294,65 @@
     font-weight: 900;
     font-size: 0.8rem;
     border-radius: 5px;
+}
+
+/* CONTINUE GAME PROMPT CONTINUE GAME PROMPT CONTINUE GAME PROMPT CONTINUE GAME PROMPT CONTINUE GAME PROMPT CONTINUE GAME PROMPT CONTINUE GAME PROMPT */
+
+#continue-game-container {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    flex: auto;
+    margin: auto;
+    padding-bottom: 5%;
+    width: 50vw;
+    height: 40vh;
+    line-height: 0%;
+    font-size: 1.5rem;
+    background-color: #a17e4b;
+    border:solid 5px #572824;
+
+    position: absolute;
+    visibility: hidden;
+}
+
+#announce-game-winner-text {
+    display: flex;
+    color: #fbcc5f;
+}
+
+#continue-game-text {
+    color: #fbcc5f;
+}
+
+#continue-stop-button-container {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 15px;
+    padding-top: 10px;
+}
+
+#continue-game-button {
+    display: flex;
+}
+
+#stop-game-button {
+    display: flex;
+}
+
+.continue-stop-game-buttons {
+    display: flex;
+    flex-flow: row nowrap;
+    width: 150px;
+    height: 35px;
+    justify-content: center;
+    align-items: center;
+    background-color: #fbcc5f;
+    color: #3c5453;
+    border-radius: 3px;
+    font-size: 1rem;
+    font-weight: 550;
 }
 
 /* FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER FOOTER */

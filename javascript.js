@@ -388,35 +388,35 @@ const ticTacToeGame = (function() {
 
         let winner = "";
         function checkForWinConditions() {
-            if (gameBoardArray.includes(1.1, 0) && gameBoardArray.includes(4.1, 0) && gameBoardArray.includes(7.1)) {
+            if (gameBoardArray.includes(1.1, 0) && gameBoardArray.includes(4.1, 0) && gameBoardArray.includes(7.1, 0)) {
                 winner = "p1";
             } else if (gameBoardArray.includes(1.2, 0) && gameBoardArray.includes(4.2, 0) && gameBoardArray.includes(7.2, 0)) {
                 winner = "p2";
-            } else if (gameBoardArray.includes(2.1, 0) && gameBoardArray.includes(5.1, 0) && gameBoardArray.includes(8.1)) {
+            } else if (gameBoardArray.includes(2.1, 0) && gameBoardArray.includes(5.1, 0) && gameBoardArray.includes(8.1, 0)) {
                 winner = "p1";
             } else if (gameBoardArray.includes(2.2, 0) && gameBoardArray.includes(5.2, 0) && gameBoardArray.includes(8.2, 0)) {
                 winner = "p2";
-            } else if (gameBoardArray.includes(3.1, 0) && gameBoardArray.includes(6.1, 0) && gameBoardArray.includes(9.1)) {
+            } else if (gameBoardArray.includes(3.1, 0) && gameBoardArray.includes(6.1, 0) && gameBoardArray.includes(9.1, 0)) {
                 winner = "p1";
             } else if (gameBoardArray.includes(3.2, 0) && gameBoardArray.includes(6.2, 0) && gameBoardArray.includes(9.2, 0)) {
                 winner = "p2";
-            } else if (gameBoardArray.includes(1.1, 0) && gameBoardArray.includes(2.1, 0) && gameBoardArray.includes(3.1)) {
+            } else if (gameBoardArray.includes(1.1, 0) && gameBoardArray.includes(2.1, 0) && gameBoardArray.includes(3.1, 0)) {
                 winner = "p1";
             } else if (gameBoardArray.includes(1.2, 0) && gameBoardArray.includes(2.2, 0) && gameBoardArray.includes(3.2, 0)) {
                 winner = "p2";
-            } else if (gameBoardArray.includes(4.1, 0) && gameBoardArray.includes(5.1, 0) && gameBoardArray.includes(6.1)) {
+            } else if (gameBoardArray.includes(4.1, 0) && gameBoardArray.includes(5.1, 0) && gameBoardArray.includes(6.1, 0)) {
                 winner = "p1";
             } else if (gameBoardArray.includes(4.2, 0) && gameBoardArray.includes(5.2, 0) && gameBoardArray.includes(6.2, 0)) {
                 winner = "p2";
-            } else if (gameBoardArray.includes(7.1, 0) && gameBoardArray.includes(8.1, 0) && gameBoardArray.includes(9.1)) {
+            } else if (gameBoardArray.includes(7.1, 0) && gameBoardArray.includes(8.1, 0) && gameBoardArray.includes(9.1, 0)) {
                 winner = "p1";
             } else if (gameBoardArray.includes(7.2, 0) && gameBoardArray.includes(8.2, 0) && gameBoardArray.includes(9.2, 0)) {
                 winner = "p2";
-            } else if (gameBoardArray.includes(1.1, 0) && gameBoardArray.includes(5.1, 0) && gameBoardArray.includes(9.1)) {
+            } else if (gameBoardArray.includes(1.1, 0) && gameBoardArray.includes(5.1, 0) && gameBoardArray.includes(9.1, 0)) {
                 winner = "p1";
             } else if (gameBoardArray.includes(1.2, 0) && gameBoardArray.includes(5.2, 0) && gameBoardArray.includes(9.2, 0)) {
                 winner = "p2";
-            } else if (gameBoardArray.includes(3.1, 0) && gameBoardArray.includes(5.1, 0) && gameBoardArray.includes(7.1)) {
+            } else if (gameBoardArray.includes(3.1, 0) && gameBoardArray.includes(5.1, 0) && gameBoardArray.includes(7.1, 0)) {
                 winner = "p1";
             } else if (gameBoardArray.includes(3.2, 0) && gameBoardArray.includes(5.2, 0) && gameBoardArray.includes(7.2, 0)) {
                 winner = "p2";

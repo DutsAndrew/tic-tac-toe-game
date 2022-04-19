@@ -81,7 +81,7 @@
     display: flex;
     flex-flow: column wrap;
     width: 30rem;
-    height: 66.55vh;
+    height: 70vh;
     padding: 20px;
     justify-content: flex-start;
     align-items: center;
@@ -361,10 +361,15 @@
     position: fixed;
     left: 0;
     bottom: 0;
+    height: 5vh;
     width: 100vw;
     background-color: #a17e4b;
     color: #572824;
     text-align: center;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
 }
 
 /* ANIMATIONS AND EXTRAS ANIMATIONS AND EXTRAS ANIMATIONS AND EXTRAS ANIMATIONS AND EXTRAS ANIMATIONS AND EXTRAS ANIMATIONS AND EXTRAS ANIMATIONS AND EXTRAS */

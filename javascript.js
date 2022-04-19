@@ -49,11 +49,12 @@ const ticTacToeGame = (function() {
 
     let gameMode = 0;
 
-    const playerVsComputer = document.querySelector('#player-vs-computer').onclick = function() {
-        playerTwoContainer.style.display = "none";
-        gameMode = 1;
-        console.log(`Game Mode: ${gameMode} - Player VS Computer was selected`);
-    }
+    // const playerVsComputer = document.querySelector('#player-vs-computer').onclick = function() {
+    //     playerTwoContainer.style.display = "none";
+    //     gameMode = 1;
+    //     console.log(`Game Mode: ${gameMode} - Player VS Computer was selected`);
+    // }
+    
     const playerVsPlayer = document.querySelector('#player-vs-player').onclick = function() {
         gameMode = 2;
         console.log(`Game Mode: ${gameMode} - Player VS Player was selected`);

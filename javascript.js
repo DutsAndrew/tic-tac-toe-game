@@ -1,22 +1,22 @@
-// Player Variables for Game
-let playerOne;
-let playerTwo;
-let gameBoardArray = [];
-
-// Creates and stores players
-const playerFactory = (name, wins, loses, symbol, tiles) => {
-    tiles = [];
-    const playerInfo = () => console.log(`Player: ${name}, Wins: ${wins}, Loses: ${loses}, Symbol: ${symbol}, Tiles: ${[tiles]}`);
-    return { 
-        name: name,
-        tiles: [],
-        playerInfo,
-    };
-};
-
 // Handles all events, functions, and variables needed for game functionality
 const ticTacToeGame = (function() {
     'use strict';
+
+    // Player Variables for Game
+    let playerOne;
+    let playerTwo;
+    let gameBoardArray = [];
+
+    // Creates and stores players
+    const playerFactory = (name, wins, loses, symbol, tiles) => {
+        tiles = [];
+        const playerInfo = () => console.log(`Player: ${name}, Wins: ${wins}, Loses: ${loses}, Symbol: ${symbol}, Tiles: ${[tiles]}`);
+        return { 
+            name: name,
+            tiles: [],
+            playerInfo,
+        };
+    };
 
     // Handles all events and functions that involve starting or reseting the game
     // functions to open and close the form
@@ -54,7 +54,7 @@ const ticTacToeGame = (function() {
     //     gameMode = 1;
     //     console.log(`Game Mode: ${gameMode} - Player VS Computer was selected`);
     // }
-    
+
     const playerVsPlayer = document.querySelector('#player-vs-player').onclick = function() {
         gameMode = 2;
         console.log(`Game Mode: ${gameMode} - Player VS Player was selected`);

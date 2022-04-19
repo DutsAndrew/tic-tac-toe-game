@@ -489,6 +489,8 @@ const ticTacToeGame = (function() {
             const continueGameContainer = document.querySelector('#continue-game-container');
             const continueGameButton = document.querySelector('#continue-game-button');
             const stopGameButton = document.querySelector('#stop-game-button');
+            const boardSymbolSword = document.querySelectorAll('img.sword-game-piece');
+            const boardSymbolShield = document.querySelectorAll('img.shield-game-piece');
 
             header.style.visibility = "hidden";
             header.style.position = "absolute";
@@ -500,7 +502,23 @@ const ticTacToeGame = (function() {
 
             continueGameButton.addEventListener('click', _continueGame);
             function _continueGame() {
+                boardSymbolSword.forEach(boardSymbolSword => {
+                    boardSymbolSword.remove();
+                });
+                boardSymbolShield.forEach(boardSymbolShield => {
+                    boardSymbolShield.remove();
+                });
 
+                gameBoardArray = [];
+                playerTurn = 0;
+
+                header.style.visibility = "visible";
+                header.style.position = "relative";
+                contentContainer.style.visibility = "visible";
+                contentContainer.style.position = "relative";
+
+                continueGameContainer.style.visibility = "hidden";
+                continueGameContainer.style.position = "absolute";
             }
 
             stopGameButton.addEventListener('click', _stopGame);

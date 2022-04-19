@@ -179,14 +179,13 @@ const ticTacToeGame = (function() {
     
         // Handles player turns in game
         let playerTurn = 0;
+        const turnTextP1 = document.createElement("p");
+        const turnTextP2 = document.createElement("p");
 
         function whosTurnIsIt() {
             const turnTextHandler = document.querySelector('.turn-text');
             const playerOneDisplay = document.querySelector('#player-one');
             const playerTwoDisplay = document.querySelector('#player-two');
-            const turnTextP1 = document.createElement("p");
-            const turnTextP2 = document.createElement("p");
-            
 
             if (playerTurn == 0) {
                 playerTurn = 1;
@@ -428,6 +427,7 @@ const ticTacToeGame = (function() {
         function declareWinner() {
             const playerOneTracker = document.querySelector('#player-one-tracker');
             const playerTwoTracker = document.querySelector('#player-two-tracker');
+            const announceWinner = document.querySelector('#announce-game-winner-text');
 
             let playerOneWins = 0;
             let playerOneLoses = 0;
@@ -437,11 +437,12 @@ const ticTacToeGame = (function() {
             if (winner == "p1") {
                 playerTurn = "hold";
                 winner = "";
-                removeTurnAnimations();
+                removeShakeAnimation();
 
                 playerOneWins++;
                 playerTwoLoses++;
                 console.log("Player one Wins!");
+                announceWinner.textContent = "Player One Wins!";
                 playerOneTracker.textContent = `Wins: ${playerOneWins} | Loses: ${playerOneLoses}`;
                 playerTwoTracker.textContent = `Wins: ${playerTwoWins} | Loses: ${playerTwoLoses}`;
 
@@ -450,11 +451,12 @@ const ticTacToeGame = (function() {
             } else if (winner == "p2") {
                 playerTurn = "hold";
                 winner = "";
-                removeTurnAnimations();
+                removeShakeAnimation();
 
                 playerTwoWins++;
                 playerOneLoses++;
                 console.log("Player Two Wins!");
+                announceWinner.textContent = "Player Two Wins!";
                 playerOneTracker.textContent = `Wins: ${playerOneWins} | Loses: ${playerOneLoses}`;
                 playerTwoTracker.textContent = `Wins: ${playerTwoWins} | Loses: ${playerTwoLoses}`;
 
@@ -462,7 +464,7 @@ const ticTacToeGame = (function() {
                 roundOver();
             } else if (winner == "no one") {
                 playerTurn = "hold";
-                removeTurnAnimations();
+                removeShakeAnimation();
 
                 console.log("No one won :(");
                 playerOneTracker.textContent = `Wins: ${playerOneWins} | Loses: ${playerOneLoses}`;
@@ -473,7 +475,7 @@ const ticTacToeGame = (function() {
             }
         }
 
-        function removeTurnAnimations() {
+        function removeShakeAnimation() {
             const turnTextHandler = document.querySelector('.turn-text');
             const playerOneDisplay = document.querySelector('#player-one');
             const playerTwoDisplay = document.querySelector('#player-two');
@@ -491,6 +493,7 @@ const ticTacToeGame = (function() {
             const stopGameButton = document.querySelector('#stop-game-button');
             const boardSymbolSword = document.querySelectorAll('img.sword-game-piece');
             const boardSymbolShield = document.querySelectorAll('img.shield-game-piece');
+            const turnText = document.querySelectorAll('p.turn-text');
 
             header.style.visibility = "hidden";
             header.style.position = "absolute";
@@ -508,6 +511,9 @@ const ticTacToeGame = (function() {
                 boardSymbolShield.forEach(boardSymbolShield => {
                     boardSymbolShield.remove();
                 });
+                turnText.forEach(turnText => {
+                    turnText.remove();
+                });
 
                 gameBoardArray = [];
                 playerTurn = 0;
@@ -519,6 +525,7 @@ const ticTacToeGame = (function() {
 
                 continueGameContainer.style.visibility = "hidden";
                 continueGameContainer.style.position = "absolute";
+                whosTurnIsIt();
             }
 
             stopGameButton.addEventListener('click', _stopGame);

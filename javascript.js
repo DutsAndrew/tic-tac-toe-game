@@ -379,6 +379,8 @@ const ticTacToeGame = (function() {
                 playerTurn = 2;
             } else if (playerTurn == 2) {
                 playerTurn = 1;
+            } else if (playerTurn == "hold") {
+                playerTurn = 1;
             }
             whosTurnIsIt();
         }
@@ -418,6 +420,8 @@ const ticTacToeGame = (function() {
                 winner = "p1";
             } else if (gameBoardArray.includes(1.2, 0) && gameBoardArray.includes(5.2, 0) && gameBoardArray.includes(9.2, 0)) {
                 winner = "p2";
+            } else if (gameBoardArray.length === 9) {
+                winner = "no one";
             }
         }
 
@@ -432,19 +436,38 @@ const ticTacToeGame = (function() {
 
             if (winner == "p1") {
                 playerTurn = "hold";
+                winner = "";
                 removeTurnAnimations();
+
                 playerOneWins++;
                 playerTwoLoses++;
                 console.log("Player one Wins!");
+                playerOneTracker.textContent = `Wins: ${playerOneWins} | Loses: ${playerOneLoses}`;
+                playerTwoTracker.textContent = `Wins: ${playerTwoWins} | Loses: ${playerTwoLoses}`;
+
+                turnCounter();
             } else if (winner == "p2") {
                 playerTurn = "hold";
+                winner = "";
                 removeTurnAnimations();
+
                 playerTwoWins++;
                 playerOneLoses++;
                 console.log("Player Two Wins!");
+                playerOneTracker.textContent = `Wins: ${playerOneWins} | Loses: ${playerOneLoses}`;
+                playerTwoTracker.textContent = `Wins: ${playerTwoWins} | Loses: ${playerTwoLoses}`;
+
+                turnCounter();
+            } else if (winner == "no one") {
+                playerTurn = "hold";
+                removeTurnAnimations();
+
+                console.log("No one won :(");
+                playerOneTracker.textContent = `Wins: ${playerOneWins} | Loses: ${playerOneLoses}`;
+                playerTwoTracker.textContent = `Wins: ${playerTwoWins} | Loses: ${playerTwoLoses}`;
+
+                turnCounter();
             }
-            playerOneTracker.textContent = `Wins: ${playerOneWins} | Loses: ${playerOneLoses}`;
-            playerTwoTracker.textContent = `Wins: ${playerTwoWins} | Loses: ${playerTwoLoses}`;
         }
 
         function removeTurnAnimations() {

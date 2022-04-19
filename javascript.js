@@ -412,13 +412,13 @@ const ticTacToeGame = (function() {
                 winner = "p1";
             } else if (gameBoardArray.includes(7.2, 0) && gameBoardArray.includes(8.2, 0) && gameBoardArray.includes(9.2, 0)) {
                 winner = "p2";
-            } else if (gameBoardArray.includes(1.1, 0) && gameBoardArray.includes(4.1, 0) && gameBoardArray.includes(7.1)) {
-                winner = "p1";
-            } else if (gameBoardArray.includes(1.2, 0) && gameBoardArray.includes(4.2, 0) && gameBoardArray.includes(7.2, 0)) {
-                winner = "p2";
             } else if (gameBoardArray.includes(1.1, 0) && gameBoardArray.includes(5.1, 0) && gameBoardArray.includes(9.1)) {
                 winner = "p1";
             } else if (gameBoardArray.includes(1.2, 0) && gameBoardArray.includes(5.2, 0) && gameBoardArray.includes(9.2, 0)) {
+                winner = "p2";
+            } else if (gameBoardArray.includes(3.1, 0) && gameBoardArray.includes(5.1, 0) && gameBoardArray.includes(7.1)) {
+                winner = "p1";
+            } else if (gameBoardArray.includes(3.2, 0) && gameBoardArray.includes(5.2, 0) && gameBoardArray.includes(7.2, 0)) {
                 winner = "p2";
             } else if (gameBoardArray.length === 9) {
                 winner = "no one";

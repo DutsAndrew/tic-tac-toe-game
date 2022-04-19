@@ -424,15 +424,15 @@ const ticTacToeGame = (function() {
             }
         }
 
+        let playerOneWins = 0;
+        let playerOneLoses = 0;
+        let playerTwoWins = 0;
+        let playerTwoLoses = 0;
+
         function declareWinner() {
             const playerOneTracker = document.querySelector('#player-one-tracker');
             const playerTwoTracker = document.querySelector('#player-two-tracker');
             const announceWinner = document.querySelector('#announce-game-winner-text');
-
-            let playerOneWins = 0;
-            let playerOneLoses = 0;
-            let playerTwoWins = 0;
-            let playerTwoLoses = 0;
 
             if (winner == "p1") {
                 playerTurn = "hold";

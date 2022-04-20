@@ -468,6 +468,7 @@ const ticTacToeGame = (function() {
                 removeShakeAnimation();
 
                 console.log("No one won :(");
+                announceWinner.textContent = "It was a tie!";
                 playerOneTracker.textContent = `Wins: ${playerOneWins} | Loses: ${playerOneLoses}`;
                 playerTwoTracker.textContent = `Wins: ${playerTwoWins} | Loses: ${playerTwoLoses}`;
 

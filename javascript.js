@@ -465,6 +465,7 @@ const ticTacToeGame = (function() {
                 roundOver();
             } else if (winner == "no one") {
                 playerTurn = "hold";
+                winner = "";
                 removeShakeAnimation();
 
                 console.log("No one won :(");
